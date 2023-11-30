@@ -1,4 +1,4 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Param, Query } from '@nestjs/common';
 import { AppService } from './app.service';
 import { ApiQuery } from '@nestjs/swagger';
 import { GeniusService } from './genius/genius.service';
@@ -9,17 +9,24 @@ export class AppController {
 
   @ApiQuery({name: 'q', type: String})
   @Get('match/query')
-  matchQuery(@Query('q') q) {
+  matchByQuery(@Query('q') q) {
     return this.geniusSrv.search(q);
   }
 
   @Get('match/link')
-  matchLink(@Query('url') url): string {
+  matchByLink(@Query('url') url): string {
+    // todo: support genius, apple music, youtube and spotify links
     return 'tba';
   }
 
   @Get('match/csv')
-  matchTable(): string {
+  matchByTable(): string {
     return 'tba'
+  }
+
+
+  @Get('hit/:id')
+  hitById(@Param('id') id: string) {
+    return this.geniusSrv.details(id);
   }
 }
