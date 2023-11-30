@@ -1,0 +1,8 @@
+get {
+  url: https://api.genius.com/annotations/10225840
+}
+
+headers {
+  content-type: application/json
+  Authorization: Bearer {{process.env.GENIUS_ACCESS_TOKEN}}
+}
