@@ -104,7 +104,7 @@ export class GeniusService {
                 releaseDate: new Date(`${song.album.release_date_for_display} 12:00`).toISOString().slice(0,10),
                 coverUrl: song.album.cover_art_url,
             },
-            artists: Array.from(artists.values()).map(({roles, artist}) => ({roles, company: this.mapArtist(artist)})),
+            artists: Array.from(artists.values()).map(({roles, artist}) => ({roles, artist: this.mapArtist(artist)})),
             companies: Array.from(companies.values()).map(({roles, company}) => ({roles, company: this.mapArtist(company)})),
             relatedSongs: Array.from(songs.values()),
         };
