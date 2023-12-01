@@ -7,6 +7,11 @@ import { GeniusService } from './genius/genius.service';
 export class AppController {
   constructor(private readonly appService: AppService, private readonly geniusSrv: GeniusService) {}
 
+  @Get('')
+  hello(): string {
+    return 'Hello';
+  }
+
   @ApiQuery({name: 'q', type: String})
   @Get('match/query')
   matchByQuery(@Query('q') q) {
