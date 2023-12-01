@@ -11,7 +11,8 @@
         "src": "/(.*)",
         "dest": "dist/main.js",
         "methods": [
-            "GET"
+            "GET",
+            "OPTIONS"
         ]
       }
     ]
