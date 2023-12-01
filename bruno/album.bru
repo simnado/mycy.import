@@ -1,0 +1,8 @@
+get {
+  url: https://api.genius.com/albums/824409
+}
+
+headers {
+  content-type: application/json
+  Authorization: Bearer {{process.env.GENIUS_ACCESS_TOKEN}}
+}

@@ -1,0 +1,155 @@
+{
+  "summary": {
+    "totalRequests": 1,
+    "passedRequests": 1,
+    "failedRequests": 0,
+    "totalAssertions": 0,
+    "passedAssertions": 0,
+    "failedAssertions": 0,
+    "totalTests": 0,
+    "passedTests": 0,
+    "failedTests": 0
+  },
+  "results": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://api.genius.com/albums/824409/tracks",
+        "headers": {
+          "content-type": "application/json",
+          "Authorization": "Bearer "
+        }
+      },
+      "response": {
+        "status": 200,
+        "statusText": "OK",
+        "headers": {
+          "date": "Fri, 01 Dec 2023 15:25:30 GMT",
+          "content-type": "application/json; charset=utf-8",
+          "transfer-encoding": "chunked",
+          "connection": "keep-alive",
+          "cf-ray": "82ec57d88af99bbf-FRA",
+          "cf-cache-status": "DYNAMIC",
+          "access-control-allow-origin": "*",
+          "cache-control": "private, max-age=0, must-revalidate",
+          "etag": "W/\"bd253758fbf942088282785288874e1b\"",
+          "via": "1.1 vegur",
+          "access-control-allow-headers": "Origin, Access-Control-Request-Method, Access-Control-Request-Headers, Content-Type, Accept, X-Auth-Token, Authorization",
+          "access-control-allow-methods": "GET, PUT, POST, OPTIONS, DELETE",
+          "nel": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}",
+          "report-to": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1701444330&sid=929419e7-33ea-4e2f-85f0-7d8b7cd5cbd6&s=ZGHrt3vHnfCzOqvYFm2EWiEz3OZeWQu6mcCi7RUsePo%3D\"}]}",
+          "reporting-endpoints": "heroku-nel=https://nel.heroku.com/reports?ts=1701444330&sid=929419e7-33ea-4e2f-85f0-7d8b7cd5cbd6&s=ZGHrt3vHnfCzOqvYFm2EWiEz3OZeWQu6mcCi7RUsePo%3D",
+          "status": "200 OK",
+          "x-runtime": "138",
+          "vary": "Accept-Encoding",
+          "server": "cloudflare"
+        },
+        "data": {
+          "meta": {
+            "status": 200
+          },
+          "response": {
+            "tracks": [
+              {
+                "number": 1,
+                "song": {
+                  "annotation_count": 28,
+                  "api_path": "/songs/6083409",
+                  "artist_names": "Lil Nas X & Jack Harlow",
+                  "full_title": "INDUSTRY BABY by Lil Nas X & Jack Harlow",
+                  "header_image_thumbnail_url": "https://images.genius.com/52ff516ba3efdd22cc0a154eb4c75d2d.300x300x1.png",
+                  "header_image_url": "https://images.genius.com/52ff516ba3efdd22cc0a154eb4c75d2d.1000x1000x1.png",
+                  "id": 6083409,
+                  "lyrics_owner_id": 11277083,
+                  "lyrics_state": "complete",
+                  "path": "/Lil-nas-x-and-jack-harlow-industry-baby-lyrics",
+                  "pyongs_count": 151,
+                  "relationships_index_url": "https://genius.com/Lil-nas-x-and-jack-harlow-industry-baby-sample",
+                  "release_date_components": {
+                    "year": 2021,
+                    "month": 7,
+                    "day": 23
+                  },
+                  "release_date_for_display": "July 23, 2021",
+                  "release_date_with_abbreviated_month_for_display": "Jul. 23, 2021",
+                  "song_art_image_thumbnail_url": "https://images.genius.com/69fdc9e890b815312ceff7d309f93d65.300x300x1.png",
+                  "song_art_image_url": "https://images.genius.com/69fdc9e890b815312ceff7d309f93d65.1000x1000x1.png",
+                  "stats": {
+                    "unreviewed_annotations": 0,
+                    "concurrents": 2,
+                    "hot": false,
+                    "pageviews": 2324862
+                  },
+                  "title": "INDUSTRY BABY",
+                  "title_with_featured": "INDUSTRY BABY",
+                  "url": "https://genius.com/Lil-nas-x-and-jack-harlow-industry-baby-lyrics",
+                  "featured_artists": [],
+                  "primary_artist": {
+                    "api_path": "/artists/2820696",
+                    "header_image_url": "https://images.genius.com/2c8afc1ba076823a32bb56134d7e0ac9.640x161x1.png",
+                    "id": 2820696,
+                    "image_url": "https://images.genius.com/cf6cd23b9a2d6cecc3365a3455437ba8.1000x1000x1.jpg",
+                    "is_meme_verified": false,
+                    "is_verified": false,
+                    "name": "Lil Nas X & Jack Harlow",
+                    "url": "https://genius.com/artists/Lil-nas-x-and-jack-harlow"
+                  }
+                }
+              },
+              {
+                "number": 2,
+                "song": {
+                  "annotation_count": 7,
+                  "api_path": "/songs/7272612",
+                  "artist_names": "Lil Nas X & Jack Harlow",
+                  "full_title": "INDUSTRY BABY (EXTENDED) by Lil Nas X & Jack Harlow",
+                  "header_image_thumbnail_url": "https://images.genius.com/69fdc9e890b815312ceff7d309f93d65.300x300x1.png",
+                  "header_image_url": "https://images.genius.com/69fdc9e890b815312ceff7d309f93d65.1000x1000x1.png",
+                  "id": 7272612,
+                  "lyrics_owner_id": 9978425,
+                  "lyrics_state": "complete",
+                  "path": "/Lil-nas-x-and-jack-harlow-industry-baby-extended-lyrics",
+                  "pyongs_count": 4,
+                  "relationships_index_url": "https://genius.com/Lil-nas-x-and-jack-harlow-industry-baby-extended-sample",
+                  "release_date_components": {
+                    "year": 2021,
+                    "month": 10,
+                    "day": 9
+                  },
+                  "release_date_for_display": "October 9, 2021",
+                  "release_date_with_abbreviated_month_for_display": "Oct. 9, 2021",
+                  "song_art_image_thumbnail_url": "https://images.genius.com/b516940e5677887660c9b712af106ce8.300x300x1.jpg",
+                  "song_art_image_url": "https://images.genius.com/b516940e5677887660c9b712af106ce8.750x750x1.jpg",
+                  "stats": {
+                    "unreviewed_annotations": 7,
+                    "hot": false,
+                    "pageviews": 34740
+                  },
+                  "title": "INDUSTRY BABY (EXTENDED)",
+                  "title_with_featured": "INDUSTRY BABY (EXTENDED)",
+                  "url": "https://genius.com/Lil-nas-x-and-jack-harlow-industry-baby-extended-lyrics",
+                  "featured_artists": [],
+                  "primary_artist": {
+                    "api_path": "/artists/2820696",
+                    "header_image_url": "https://images.genius.com/2c8afc1ba076823a32bb56134d7e0ac9.640x161x1.png",
+                    "id": 2820696,
+                    "image_url": "https://images.genius.com/cf6cd23b9a2d6cecc3365a3455437ba8.1000x1000x1.jpg",
+                    "is_meme_verified": false,
+                    "is_verified": false,
+                    "name": "Lil Nas X & Jack Harlow",
+                    "url": "https://genius.com/artists/Lil-nas-x-and-jack-harlow"
+                  }
+                }
+              }
+            ],
+            "next_page": null
+          }
+        },
+        "responseTime": 464
+      },
+      "error": null,
+      "assertionResults": [],
+      "testResults": []
+    }
+  ]
+}

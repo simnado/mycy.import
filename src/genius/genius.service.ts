@@ -97,11 +97,11 @@ export class GeniusService {
             id: song.id,
             media: [...song.media, { provider: 'apple music', type: 'audio', url: `https://music.apple.com/de/song/_/${song.apple_music_id }`}],
             song: this.mapSong(song),
-            album: { // todo: do detail request (non-public api)
+            album: {
                 id: song.album.id,
                 title: song.album.name,
                 artistId: song.album.artist.id,
-                releaseDate: song.album.release_date_for_display,
+                releaseDate: new Date(`${song.album.release_date_for_display} 12:00`).toISOString().slice(0,10),
                 coverUrl: song.album.cover_art_url,
             },
             artists: Array.from(artists.values()).map(({roles, artist}) => ({roles, company: this.mapArtist(artist)})),
