@@ -62,8 +62,10 @@ export class GeniusService {
             artists.set(writer.id, {roles: [...(artists.get(writer.id)?.roles ?? []), 'Writer Artist'], artist: writer});
         }
 
-        const artistPerformanceKeys = ['Mixing Engineer', 'Primary Artists', 'Bass', 'Percussion', 'Guitar', 'Keyboards', 'Additional Vocals', ];
+        const artistPerformanceKeys = ['Mixing Engineer', 'Primary Artists', 'Bass', 'Percussion', 'Guitar', 'Keyboards', 'Additional Vocals', 'Vocals', 'Engineer', 'Co-Producer', 'Background Vocals', 'Miscellaneous Production'];
         const companyPerformanceKeys = ['Mixed At', 'Performance Rights', 'Publisher', 'Licensing', 'Label', 'Copyright ©', 'Phonographic Copyright ℗'];
+        const ignoredPerformanceKeys = ['Video Dancer'];
+        const unknownLabels = [];
 
         for (const perf of song.custom_performances) {
             if (artistPerformanceKeys.includes(perf.label)) {
@@ -74,9 +76,15 @@ export class GeniusService {
                 for (const company of perf.artists) {
                     companies.set(company.id, {roles: [...(companies.get(company.id)?.roles ?? []), perf.label], company})
                 }
+            } else if(ignoredPerformanceKeys.includes(perf.label) || /Video/.test(perf.label)) {
+                continue;
             } else {
-                throw new Error(`unknown label ${perf.label}`)
+                unknownLabels.push(perf.label);
             }
+        }
+
+        if (unknownLabels.length) {
+            console.warn(`unknown label ${unknownLabels.join(', ')}`)
         }
 
         for (const relation of song.song_relationships.filter(rel => !['translation_of', 'translations'].includes(rel.type))) {
@@ -102,20 +110,29 @@ export class GeniusService {
         };
     }
 
+    private flatDescription(el: {children: any[], tag: string}) {
+        const res = []
+        for (const child of el.children) {
+            if (typeof child === 'object') {
+                res.push(this.flatDescription(child));
+            } else {
+                res.push(child);
+            }
+
+            if (child.tag === 'p') {
+                res.push('\n');
+            }
+        }   
+        return res.join('').trim();
+    }
+
     protected mapSong(song: any) {
         return {
             id: song.id,
             title: song.title,
             artist: song.artist_names,
             releaseDate: song.release_date,
-            description: song.description?.dom.children.map(el => {  // todo: support deeper nesting
-                for (const child of el.children ?? []) {
-                    if (typeof child === 'object') {
-                        child.children = child.children.map(el => el.children);
-                    }
-                }                    
-                return (el.tag === 'p' ? `${el.children}\n` : el.children)?.trim();
-            }).join(),
+            description: this.flatDescription(song.description?.dom ?? {children: []}),
             language: song.language,
             recordingLocation: song.recording_location,
             imageUrl: song.song_art_image_url,
