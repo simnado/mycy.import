@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { ApiProperty } from '@nestjs/swagger';
 import * as api from 'genius-api';
 
 export type LegalPerson = {
@@ -27,6 +28,20 @@ export type Album = {
     coverUrl: string;
 }
 
+export class SongSearchResult {
+    @ApiProperty()
+    id: string;
+
+    @ApiProperty()
+    title: string;
+
+    @ApiProperty()
+    thumbnailUrl: string;
+
+    @ApiProperty()
+    releaseDate: string;
+}
+
 @Injectable()
 export class GeniusService {
 
@@ -38,9 +53,9 @@ export class GeniusService {
         return hits.filter(hit => hit.type === 'song').map(hit => ({
             id: hit.result.id,
             title: hit.result.full_title,
-            thumbnail: hit.result.header_image_thumbnail_url,
+            thumbnailUrl: hit.result.song_art_image_thumbnail_url,
             releaseDate: hit.result.release_date_for_display,
-        }));
+        } as SongSearchResult));
     }
 
     async details(id: string) {

@@ -1,7 +1,7 @@
 import { Controller, Get, Param, Query } from '@nestjs/common';
 import { AppService } from './app.service';
-import { ApiQuery } from '@nestjs/swagger';
-import { GeniusService } from './genius/genius.service';
+import { ApiQuery, ApiResponse } from '@nestjs/swagger';
+import { GeniusService, SongSearchResult } from './genius/genius.service';
 
 @Controller()
 export class AppController {
@@ -13,6 +13,7 @@ export class AppController {
   }
 
   @ApiQuery({name: 'q', type: String})
+  @ApiResponse({type: SongSearchResult, isArray: true})
   @Get('match/query')
   matchByQuery(@Query('q') q) {
     return this.geniusSrv.search(q);
