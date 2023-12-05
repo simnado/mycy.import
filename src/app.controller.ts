@@ -2,14 +2,17 @@ import { Controller, Get, Param, Query } from '@nestjs/common';
 import { AppService } from './app.service';
 import { ApiQuery, ApiResponse } from '@nestjs/swagger';
 import { GeniusService, SongSearchResult } from './genius/genius.service';
+import { DiscogsService } from './discogs/discogs.service';
+import { Match } from './matching/match/match.entity';
+import { MatchService } from './matching/match/match.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService, private readonly geniusSrv: GeniusService) {}
+  constructor(private readonly appService: AppService, private readonly geniusSrv: GeniusService, private discogsSrv: DiscogsService, private matchSrv: MatchService) {}
 
   @Get('')
-  hello(): string {
-    return 'Hello';
+  hello() {
+    return this.discogsSrv.search('Industry Baby');
   }
 
   @ApiQuery({name: 'q', type: String})
@@ -32,7 +35,14 @@ export class AppController {
 
 
   @Get('hit/:id')
-  hitById(@Param('id') id: string) {
-    return this.geniusSrv.details(id);
+  @ApiResponse({type: Match})
+  async hitById(@Param('id') geniusId: string) {
+    let match = await this.matchSrv.findOne(geniusId)
+    if(!match) {
+      const newMatch = await this.geniusSrv.details(geniusId);
+      match = await this.matchSrv.createOne(newMatch);
+      console.log('created', match.id)
+    }
+    return match;
   }
 }

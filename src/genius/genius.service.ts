@@ -1,32 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { ApiProperty } from '@nestjs/swagger';
 import * as api from 'genius-api';
+import { LegalPerson, Match } from 'src/matching/match/match.entity';
 
-export type LegalPerson = {
-    id: string;
-    name:  string;
-    headerImageUrl: string;
-    squaredImageUrl: string;
-}
-
-export type Song = {
-    id: string;
-    title: string;
-    artist: string;
-    releaseDate: string;
-    description: string;
-    language: string;
-    recordingLocation: string;
-    imageUrl: string;
-}
-
-export type Album = {
-    id: string;
-    title: string;
-    artistId: string;
-    releaseDate: string;
-    coverUrl: string;
-}
 
 export class SongSearchResult {
     @ApiProperty()
@@ -58,7 +34,7 @@ export class GeniusService {
         } as SongSearchResult));
     }
 
-    async details(id: string) {
+    async details(id: string): Promise<Match> {
         const { song } = await this.sdk.song(id);
 
         const artists = new Map<string, {roles: string[], artist: LegalPerson}>();
@@ -109,20 +85,26 @@ export class GeniusService {
         }
 
         return {
-            id: song.id,
+            geniusId: song.id,
+            appleMusicId: song.apple_music_id,
+            spotifyId: song.media.find(m => m.provider === "spotify")?.url.split('/track/').pop(),
+            youTubeId: song.media.find(m => m.provider === 'youtube')?.url.split('v=').pop(),
             media: [...song.media, { provider: 'apple music', type: 'audio', url: `https://music.apple.com/de/song/_/${song.apple_music_id }`}],
             song: this.mapSong(song),
-            album: {
-                id: song.album.id,
-                title: song.album.name,
-                artistId: song.album.artist.id,
-                releaseDate: new Date(`${song.album.release_date_for_display} 12:00`).toISOString().slice(0,10),
-                coverUrl: song.album.cover_art_url,
-            },
-            artists: Array.from(artists.values()).map(({roles, artist}) => ({roles, artist: this.mapArtist(artist)})),
-            companies: Array.from(companies.values()).map(({roles, company}) => ({roles, company: this.mapArtist(company)})),
+            relatedAlbums: [{
+                roles: ['album'], 
+                album: {
+                    id: song.album.id,
+                    title: song.album.name,
+                    artistId: song.album.artist.id,
+                    releaseDate: new Date(`${song.album.release_date_for_display} 12:00`).toISOString().slice(0,10),
+                    coverUrl: song.album.cover_art_url,
+                }
+            }],
+            relatedArtists: Array.from(artists.values()).map(({roles, artist}) => ({roles, artist: this.mapArtist(artist)})),
+            relatedCompanies: Array.from(companies.values()).map(({roles, company}) => ({roles, company: this.mapArtist(company)})),
             relatedSongs: Array.from(songs.values()),
-        };
+        } as Match;
     }
 
     private flatDescription(el: {children: any[], tag: string}) {
