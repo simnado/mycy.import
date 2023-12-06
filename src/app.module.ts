@@ -9,6 +9,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { MatchService } from './matching/match/match.service';
 import { JobService } from './jobs/job/job.service';
 import { Match } from './matching/match/match.entity';
+import { CyaniteSdkModule } from '@narendev/cyanite-sdk';
 
 @Module({
   imports: [
@@ -21,7 +22,8 @@ import { Match } from './matching/match/match.entity';
       ssl: true,
       "extra": { poolSize: 10 }
     }),
-    TypeOrmModule.forFeature([Match])
+    TypeOrmModule.forFeature([Match]),
+    CyaniteSdkModule
   ],
   controllers: [AppController],
   providers: [AppService, GeniusService, DiscogsService, MatchService, JobService],

@@ -1,0 +1,1686 @@
+/* eslint-disable */
+
+export const AllTypesProps: Record<string,any> = {
+	AnalysisStatus: "enum" as const,
+	Mutation:{
+		crateCreate:{
+			input:"CrateCreateInput"
+		},
+		crateDelete:{
+			input:"CrateDeleteInput"
+		},
+		crateAddLibraryTracks:{
+			input:"CrateAddLibraryTracksInput"
+		},
+		crateRemoveLibraryTracks:{
+			input:"CrateRemoveLibraryTracksInput"
+		},
+		libraryTrackCreate:{
+			input:"LibraryTrackCreateInput"
+		},
+		libraryTrackEnqueue:{
+			input:"LibraryTrackEnqueueInput"
+		},
+		libraryTracksDelete:{
+			input:"LibraryTracksDeleteInput"
+		},
+		youTubeTrackEnqueue:{
+			input:"YouTubeTrackEnqueueInput"
+		},
+		spotifyTrackEnqueue:{
+			input:"SpotifyTrackEnqueueInput"
+		},
+		selectBrandValues:{
+			input:"SelectBrandValuesInput"
+		}
+	},
+	Query:{
+		spotifyTrackAnalysis:{
+
+		},
+		libraryTrack:{
+
+		},
+		libraryTracks:{
+			filter:"LibraryTracksFilter"
+		},
+		crates:{
+
+		},
+		spotifyTrack:{
+
+		},
+		keywordSearch:{
+			target:"KeywordSearchTarget",
+			keywords:"KeywordSearchKeyword"
+		},
+		freeTextSearch:{
+			target:"FreeTextSearchTarget"
+		},
+		lyricsSearch:{
+			target:"LyricsSearchTarget"
+		}
+	},
+	SimilaritySearchWeightFilter:{
+
+	},
+	EnergyLevel: "enum" as const,
+	EnergyDynamics: "enum" as const,
+	EmotionalProfile: "enum" as const,
+	EmotionalDynamics: "enum" as const,
+	VoicePresenceProfile: "enum" as const,
+	PredominantVoiceGender: "enum" as const,
+	InDepthAnalysisCreateInput:{
+
+	},
+	SpotifyTrackAnalysis:{
+		similarLibraryTracks:{
+			weights:"SimilaritySearchWeightFilter"
+		}
+	},
+	Track:{
+		similarTracks:{
+			searchMode:"SimilarTracksSearchMode",
+			target:"SimilarTracksTarget",
+			experimental_filter:"experimental_SimilarTracksFilter"
+		}
+	},
+	AudioAnalysisV6GenreTags: "enum" as const,
+	AudioAnalysisV6SubgenreEdmTags: "enum" as const,
+	AudioAnalysisV6MoodTags: "enum" as const,
+	AudioAnalysisV6SubgenreTags: "enum" as const,
+	AudioAnalysisV6InstrumentTags: "enum" as const,
+	AudioAnalysisInstrumentPresenceLabel: "enum" as const,
+	AudioAnalysisV6EnergyLevel: "enum" as const,
+	AudioAnalysisV6EnergyDynamics: "enum" as const,
+	AudioAnalysisV6EmotionalProfile: "enum" as const,
+	AudioAnalysisV6EmotionalDynamics: "enum" as const,
+	AudioAnalysisV6VoicePresenceProfile: "enum" as const,
+	AudioAnalysisV6PredominantVoiceGender: "enum" as const,
+	AudioAnalysisV6VoiceTags: "enum" as const,
+	AudioAnalysisV6MovementTags: "enum" as const,
+	AudioAnalysisV6CharacterTags: "enum" as const,
+	AudioAnalysisV6ClassicalEpochTags: "enum" as const,
+	AudioAnalysisV6MoodAdvancedTags: "enum" as const,
+	AudioAnalysisV7InstrumentTags: "enum" as const,
+	AudioAnalysisV7ExtendedInstrumentTags: "enum" as const,
+	AudioAnalysisV7GenreTags: "enum" as const,
+	AudioAnalysisV7SubgenreTags: "enum" as const,
+	LibraryTrack:{
+		similarLibraryTracks:{
+
+		},
+		similarTracks:{
+			searchMode:"SimilarTracksSearchMode",
+			target:"SimilarTracksTarget",
+			experimental_filter:"experimental_SimilarTracksFilter"
+		}
+	},
+	SpotifyTrack:{
+		similarTracks:{
+			searchMode:"SimilarTracksSearchMode",
+			target:"SimilarTracksTarget",
+			experimental_filter:"experimental_SimilarTracksFilter"
+		}
+	},
+	SimilarLibraryTracksErrorCode: "enum" as const,
+	LibraryTracksFilter:{
+
+	},
+	CrateCreateErrorCode: "enum" as const,
+	CrateDeleteInput:{
+
+	},
+	CrateCreateInput:{
+
+	},
+	CrateAddLibraryTracksInput:{
+
+	},
+	CrateRemoveLibraryTracksInput:{
+
+	},
+	CrateDeleteErrorCode: "enum" as const,
+	CrateAddLibraryTracksErrorCode: "enum" as const,
+	CrateRemoveLibraryTracksErrorCode: "enum" as const,
+	LibraryTrackCreateInput:{
+
+	},
+	LibraryTrackCreateErrorCode: "enum" as const,
+	LibraryTrackEnqueueErrorCode: "enum" as const,
+	LibraryTrackEnqueueInput:{
+
+	},
+	LibraryTracksDeleteErrorCode: "enum" as const,
+	LibraryTracksDeleteInput:{
+
+	},
+	YouTubeTrackEnqueueErrorCode: "enum" as const,
+	YouTubeTrackEnqueueInput:{
+
+	},
+	SpotifyTrackEnqueueInput:{
+
+	},
+	SimilarTracksErrorCode: "enum" as const,
+	MusicalKey: "enum" as const,
+	MusicalGenre: "enum" as const,
+	SimilarTracksSearchModeInterval:{
+
+	},
+	SimilarTracksSearchMode:{
+		interval:"SimilarTracksSearchModeInterval"
+	},
+	SimilarTracksTargetLibrary:{
+
+	},
+	SimilarTracksTargetSpotify:{
+
+	},
+	SimilarTracksTargetCrate:{
+
+	},
+	SimilarTracksTarget:{
+		library:"SimilarTracksTargetLibrary",
+		crate:"SimilarTracksTargetCrate",
+		spotify:"SimilarTracksTargetSpotify"
+	},
+	experimental_SimilarTracksFilterBpmInput:{
+
+	},
+	experimental_SimilarTracksFilterBpmRange:{
+
+	},
+	experimental_SimilarTracksFilterBpm:{
+		input:"experimental_SimilarTracksFilterBpmInput",
+		range:"experimental_SimilarTracksFilterBpmRange"
+	},
+	experimental_SimilarTracksFilterGenreInput:{
+
+	},
+	experimental_SimilarTracksFilterGenre:{
+		input:"experimental_SimilarTracksFilterGenreInput",
+		list:"MusicalGenre"
+	},
+	experimental_SimilarTracksFilterKeyCamelotInput:{
+
+	},
+	experimental_SimilarTracksFilterKeyCamelot:{
+		input:"experimental_SimilarTracksFilterKeyCamelotInput",
+		key:"MusicalKey"
+	},
+	experimental_SimilarTracksFilterKeyMatchingInput:{
+
+	},
+	experimental_SimilarTracksFilterKeyMatching:{
+		input:"experimental_SimilarTracksFilterKeyMatchingInput",
+		list:"MusicalKey"
+	},
+	experimental_SimilarTracksFilterKey:{
+		camelot:"experimental_SimilarTracksFilterKeyCamelot",
+		matching:"experimental_SimilarTracksFilterKeyMatching"
+	},
+	experimental_SimilarTracksFilter:{
+		bpm:"experimental_SimilarTracksFilterBpm",
+		genre:"experimental_SimilarTracksFilterGenre",
+		key:"experimental_SimilarTracksFilterKey"
+	},
+	KeywordSearchKeyword:{
+
+	},
+	KeywordSearchErrorCode: "enum" as const,
+	KeywordSearchTargetLibrary:{
+
+	},
+	KeywordSearchTargetCrate:{
+
+	},
+	KeywordSearchTargetSpotify:{
+
+	},
+	KeywordSearchTarget:{
+		library:"KeywordSearchTargetLibrary",
+		crate:"KeywordSearchTargetCrate",
+		spotify:"KeywordSearchTargetSpotify"
+	},
+	AugmentedKeywordsErrorCode: "enum" as const,
+	SelectBrandValuesInput:{
+
+	},
+	BrandValuesErrorCode: "enum" as const,
+	FreeTextSearchErrorCode: "enum" as const,
+	FreeTextSearchTargetLibrary:{
+
+	},
+	FreeTextSearchTargetCrate:{
+
+	},
+	FreeTextSearchTargetSpotify:{
+
+	},
+	FreeTextSearchTarget:{
+		library:"FreeTextSearchTargetLibrary",
+		crate:"FreeTextSearchTargetCrate",
+		spotify:"FreeTextSearchTargetSpotify"
+	},
+	LyricsSearchErrorCode: "enum" as const,
+	LyricsSearchTargetSpotify:{
+
+	},
+	LyricsSearchTarget:{
+		spotify:"LyricsSearchTargetSpotify"
+	}
+}
+
+export const ReturnTypes: Record<string,any> = {
+	Error:{
+		"...on NoSimilarSpotifyTracksAvailableError": "NoSimilarSpotifyTracksAvailableError",
+		"...on SpotifySimilarLibraryTracksError": "SpotifySimilarLibraryTracksError",
+		"...on SpotifyTrackNotFoundError": "SpotifyTrackNotFoundError",
+		"...on SpotifyTrackWithoutPreviewUrlError": "SpotifyTrackWithoutPreviewUrlError",
+		"...on AudioAnalysisV6Error": "AudioAnalysisV6Error",
+		"...on LibraryTrackNotFoundError": "LibraryTrackNotFoundError",
+		"...on SimilarLibraryTracksError": "SimilarLibraryTracksError",
+		"...on CrateCreateError": "CrateCreateError",
+		"...on CrateDeleteError": "CrateDeleteError",
+		"...on CrateAddLibraryTracksError": "CrateAddLibraryTracksError",
+		"...on CrateRemoveLibraryTracksError": "CrateRemoveLibraryTracksError",
+		"...on LibraryTrackCreateError": "LibraryTrackCreateError",
+		"...on LibraryTrackEnqueueError": "LibraryTrackEnqueueError",
+		"...on LibraryTracksDeleteError": "LibraryTracksDeleteError",
+		"...on SpotifyTrackError": "SpotifyTrackError",
+		"...on SpotifyTrackEnqueueError": "SpotifyTrackEnqueueError",
+		"...on SimilarTracksError": "SimilarTracksError",
+		"...on KeywordSearchError": "KeywordSearchError",
+		"...on AugmentedKeywordsError": "AugmentedKeywordsError",
+		"...on BrandValuesError": "BrandValuesError",
+		"...on FreeTextSearchError": "FreeTextSearchError",
+		"...on LyricsSearchError": "LyricsSearchError",
+		message:"String"
+	},
+	PageInfo:{
+		hasNextPage:"Boolean"
+	},
+	SpotifyArtistInfo:{
+		id:"ID",
+		name:"String"
+	},
+	SpotifyTrackInfo:{
+		id:"ID",
+		name:"String",
+		artists:"SpotifyArtistInfo"
+	},
+	TrackAnalysisScores:{
+		excited:"Float",
+		euphoric:"Float",
+		uplifting:"Float",
+		angry:"Float",
+		tense:"Float",
+		melancholic:"Float",
+		relaxed:"Float",
+		happy:"Float",
+		sad:"Float",
+		dark:"Float",
+		pumped:"Float",
+		energetic:"Float",
+		calm:"Float"
+	},
+	TrackAnalysis:{
+		arousal:"Float",
+		valence:"Float",
+		scores:"TrackAnalysisScores"
+	},
+	FileInfo:{
+		duration:"Float",
+		fileSizeKb:"Int",
+		bitrate:"Float",
+		sampleRate:"Float"
+	},
+	TrackSegmentAnalysis:{
+		start:"Float",
+		timestamp:"Float",
+		duration:"Float",
+		analysis:"TrackAnalysis"
+	},
+	FileAnalysisLabel:{
+		title:"String",
+		type:"String",
+		start:"Float",
+		end:"Float",
+		amount:"Float"
+	},
+	Mutation:{
+		ping:"Boolean",
+		fileUploadRequest:"FileUploadRequest",
+		crateCreate:"CrateCreateResult",
+		crateDelete:"CrateDeleteResult",
+		crateAddLibraryTracks:"CrateAddLibraryTracksResult",
+		crateRemoveLibraryTracks:"CrateRemoveLibraryTracksResult",
+		libraryTrackCreate:"LibraryTrackCreateResult",
+		libraryTrackEnqueue:"LibraryTrackEnqueueResult",
+		libraryTracksDelete:"LibraryTracksDeleteResult",
+		youTubeTrackEnqueue:"YouTubeTrackEnqueueResult",
+		spotifyTrackEnqueue:"SpotifyTrackEnqueueResult",
+		selectBrandValues:"SelectBrandValuesResult"
+	},
+	Query:{
+		ping:"Boolean",
+		spotifyTrackAnalysis:"SpotifyTrackAnalysisResult",
+		libraryTrack:"LibraryTrackResult",
+		libraryTracks:"LibraryTrackConnection",
+		crates:"CratesConnection",
+		spotifyTrack:"SpotifyTrackResult",
+		keywordSearch:"KeywordSearchResult",
+		keywords:"KeywordConnection",
+		brandValues:"BrandValuesResult",
+		freeTextSearch:"FreeTextSearchResult",
+		lyricsSearch:"LyricsSearchResult"
+	},
+	Subscription:{
+		ping:"Boolean"
+	},
+	InDepthAnalysisGenre:{
+		title:"String",
+		confidence:"Float"
+	},
+	NoSimilarSpotifyTracksAvailableError:{
+		message:"String"
+	},
+	SimilarSpotifyTracksResult:{
+		"...on NoSimilarSpotifyTracksAvailableError":"NoSimilarSpotifyTracksAvailableError",
+		"...on SimilarSpotifyTrackConnection":"SimilarSpotifyTrackConnection"
+	},
+	SimilarLibraryTrackNode:{
+		distance:"Float",
+		sort:"Int",
+		inDepthAnalysisId:"ID",
+		libraryTrack:"LibraryTrack"
+	},
+	SimilarLibraryTrackEdge:{
+		cursor:"String",
+		node:"SimilarLibraryTrackNode"
+	},
+	SimilarLibraryTrackConnection:{
+		pageInfo:"PageInfo",
+		edges:"SimilarLibraryTrackEdge"
+	},
+	VoiceSegmentScores:{
+		female:"Float",
+		instrumental:"Float",
+		male:"Float"
+	},
+	VoiceMeanScores:{
+		female:"Float",
+		instrumental:"Float",
+		male:"Float"
+	},
+	FileUploadRequest:{
+		id:"ID",
+		uploadUrl:"String"
+	},
+	SimilarSpotifyTrackNode:{
+		distance:"Float",
+		score:"Float",
+		spotifyTrackId:"ID",
+		trackInfo:"SpotifyTrackInfo"
+	},
+	SimilarSpotifyTrackEdge:{
+		cursor:"String",
+		node:"SimilarSpotifyTrackNode"
+	},
+	SimilarSpotifyTrackConnection:{
+		pageInfo:"PageInfo",
+		edges:"SimilarSpotifyTrackEdge"
+	},
+	SpotifyTrackAnalysis:{
+		id:"ID",
+		status:"AnalysisStatus",
+		similarLibraryTracks:"SpotifySimilarLibraryTracks"
+	},
+	SpotifySimilarLibraryTracks:{
+		"...on SpotifySimilarLibraryTracksResult":"SpotifySimilarLibraryTracksResult",
+		"...on SpotifySimilarLibraryTracksError":"SpotifySimilarLibraryTracksError"
+	},
+	SpotifySimilarLibraryTracksResult:{
+		results:"LibraryTrack"
+	},
+	SpotifySimilarLibraryTracksError:{
+		code:"String",
+		message:"String"
+	},
+	SpotifyTrackNotFoundError:{
+		message:"String"
+	},
+	SpotifyTrackWithoutPreviewUrlError:{
+		message:"String"
+	},
+	SpotifyTrackAnalysisResult:{
+		"...on SpotifyTrackAnalysis":"SpotifyTrackAnalysis",
+		"...on SpotifyTrackNotFoundError":"SpotifyTrackNotFoundError",
+		"...on SpotifyTrackWithoutPreviewUrlError":"SpotifyTrackWithoutPreviewUrlError"
+	},
+	Track:{
+		"...on LibraryTrack": "LibraryTrack",
+		"...on SpotifyTrack": "SpotifyTrack",
+		id:"ID",
+		title:"String",
+		audioAnalysisV6:"AudioAnalysisV6",
+		similarTracks:"SimilarTracksResult",
+		augmentedKeywords:"AugmentedKeywordsResult",
+		brandValues:"BrandValuesResult"
+	},
+	AudioAnalysisV6:{
+		"...on AudioAnalysisV6NotStarted":"AudioAnalysisV6NotStarted",
+		"...on AudioAnalysisV6Enqueued":"AudioAnalysisV6Enqueued",
+		"...on AudioAnalysisV6Processing":"AudioAnalysisV6Processing",
+		"...on AudioAnalysisV6Finished":"AudioAnalysisV6Finished",
+		"...on AudioAnalysisV6Failed":"AudioAnalysisV6Failed"
+	},
+	AudioAnalysisV6NotStarted:{
+		_:"Boolean"
+	},
+	AudioAnalysisV6Enqueued:{
+		_:"Boolean"
+	},
+	AudioAnalysisV6Processing:{
+		_:"Boolean"
+	},
+	AudioAnalysisV6Finished:{
+		result:"AudioAnalysisV6Result"
+	},
+	AudioAnalysisV6Failed:{
+		error:"AudioAnalysisV6Error"
+	},
+	AudioAnalysisV6Error:{
+		message:"String"
+	},
+	AudioAnalysisV6MaximumMoodInterval:{
+		mood:"AudioAnalysisV6MoodTags",
+		start:"Float",
+		end:"Float"
+	},
+	AudioAnalysisV6Genre:{
+		ambient:"Float",
+		blues:"Float",
+		classical:"Float",
+		country:"Float",
+		electronicDance:"Float",
+		folk:"Float",
+		folkCountry:"Float",
+		indieAlternative:"Float",
+		funkSoul:"Float",
+		jazz:"Float",
+		latin:"Float",
+		metal:"Float",
+		pop:"Float",
+		punk:"Float",
+		rapHipHop:"Float",
+		reggae:"Float",
+		rnb:"Float",
+		rock:"Float",
+		singerSongwriter:"Float"
+	},
+	AudioAnalysisV6GenreSegments:{
+		ambient:"Float",
+		blues:"Float",
+		classical:"Float",
+		country:"Float",
+		electronicDance:"Float",
+		folk:"Float",
+		folkCountry:"Float",
+		indieAlternative:"Float",
+		funkSoul:"Float",
+		jazz:"Float",
+		latin:"Float",
+		metal:"Float",
+		pop:"Float",
+		punk:"Float",
+		rapHipHop:"Float",
+		reggae:"Float",
+		rnb:"Float",
+		rock:"Float",
+		singerSongwriter:"Float"
+	},
+	AudioAnalysisV6SubgenreSegments:{
+		bluesRock:"Float",
+		folkRock:"Float",
+		hardRock:"Float",
+		indieAlternative:"Float",
+		psychedelicProgressiveRock:"Float",
+		punk:"Float",
+		rockAndRoll:"Float",
+		popSoftRock:"Float",
+		abstractIDMLeftfield:"Float",
+		breakbeatDnB:"Float",
+		deepHouse:"Float",
+		electro:"Float",
+		house:"Float",
+		minimal:"Float",
+		synthPop:"Float",
+		techHouse:"Float",
+		techno:"Float",
+		trance:"Float",
+		contemporaryRnB:"Float",
+		gangsta:"Float",
+		jazzyHipHop:"Float",
+		popRap:"Float",
+		trap:"Float",
+		blackMetal:"Float",
+		deathMetal:"Float",
+		doomMetal:"Float",
+		heavyMetal:"Float",
+		metalcore:"Float",
+		nuMetal:"Float",
+		disco:"Float",
+		funk:"Float",
+		gospel:"Float",
+		neoSoul:"Float",
+		soul:"Float",
+		bigBandSwing:"Float",
+		bebop:"Float",
+		contemporaryJazz:"Float",
+		easyListening:"Float",
+		fusion:"Float",
+		latinJazz:"Float",
+		smoothJazz:"Float",
+		country:"Float",
+		folk:"Float"
+	},
+	AudioAnalysisV6SubgenreEdm:{
+		breakbeatDrumAndBass:"Float",
+		deepHouse:"Float",
+		electro:"Float",
+		house:"Float",
+		minimal:"Float",
+		techHouse:"Float",
+		techno:"Float",
+		trance:"Float"
+	},
+	AudioAnalysisV6Subgenre:{
+		bluesRock:"Float",
+		folkRock:"Float",
+		hardRock:"Float",
+		indieAlternative:"Float",
+		psychedelicProgressiveRock:"Float",
+		punk:"Float",
+		rockAndRoll:"Float",
+		popSoftRock:"Float",
+		abstractIDMLeftfield:"Float",
+		breakbeatDnB:"Float",
+		deepHouse:"Float",
+		electro:"Float",
+		house:"Float",
+		minimal:"Float",
+		synthPop:"Float",
+		techHouse:"Float",
+		techno:"Float",
+		trance:"Float",
+		contemporaryRnB:"Float",
+		gangsta:"Float",
+		jazzyHipHop:"Float",
+		popRap:"Float",
+		trap:"Float",
+		blackMetal:"Float",
+		deathMetal:"Float",
+		doomMetal:"Float",
+		heavyMetal:"Float",
+		metalcore:"Float",
+		nuMetal:"Float",
+		disco:"Float",
+		funk:"Float",
+		gospel:"Float",
+		neoSoul:"Float",
+		soul:"Float",
+		bigBandSwing:"Float",
+		bebop:"Float",
+		contemporaryJazz:"Float",
+		easyListening:"Float",
+		fusion:"Float",
+		latinJazz:"Float",
+		smoothJazz:"Float",
+		country:"Float",
+		folk:"Float"
+	},
+	AudioAnalysisV6Mood:{
+		aggressive:"Float",
+		calm:"Float",
+		chilled:"Float",
+		dark:"Float",
+		energetic:"Float",
+		epic:"Float",
+		happy:"Float",
+		romantic:"Float",
+		sad:"Float",
+		scary:"Float",
+		sexy:"Float",
+		ethereal:"Float",
+		uplifting:"Float"
+	},
+	AudioAnalysisV6MoodSegments:{
+		aggressive:"Float",
+		calm:"Float",
+		chilled:"Float",
+		dark:"Float",
+		energetic:"Float",
+		epic:"Float",
+		happy:"Float",
+		romantic:"Float",
+		sad:"Float",
+		scary:"Float",
+		sexy:"Float",
+		ethereal:"Float",
+		uplifting:"Float"
+	},
+	AudioAnalysisV6Instruments:{
+		percussion:"Float"
+	},
+	AudioAnalysisV6InstrumentPresence:{
+		percussion:"AudioAnalysisInstrumentPresenceLabel",
+		synth:"AudioAnalysisInstrumentPresenceLabel",
+		piano:"AudioAnalysisInstrumentPresenceLabel",
+		acousticGuitar:"AudioAnalysisInstrumentPresenceLabel",
+		electricGuitar:"AudioAnalysisInstrumentPresenceLabel",
+		strings:"AudioAnalysisInstrumentPresenceLabel",
+		bass:"AudioAnalysisInstrumentPresenceLabel",
+		bassGuitar:"AudioAnalysisInstrumentPresenceLabel",
+		brassWoodwinds:"AudioAnalysisInstrumentPresenceLabel"
+	},
+	AudioAnalysisV6InstrumentsSegments:{
+		percussion:"Float",
+		synth:"Float",
+		piano:"Float",
+		acousticGuitar:"Float",
+		electricGuitar:"Float",
+		strings:"Float",
+		bass:"Float",
+		bassGuitar:"Float",
+		brassWoodwinds:"Float"
+	},
+	AudioAnalysisV6Voice:{
+		female:"Float",
+		instrumental:"Float",
+		male:"Float"
+	},
+	AudioAnalysisV6VoiceSegments:{
+		female:"Float",
+		instrumental:"Float",
+		male:"Float"
+	},
+	AudioAnalysisV6SubgenreEdmSegments:{
+		breakbeatDrumAndBass:"Float",
+		deepHouse:"Float",
+		electro:"Float",
+		house:"Float",
+		minimal:"Float",
+		techHouse:"Float",
+		techno:"Float",
+		trance:"Float"
+	},
+	AudioAnalysisV6Movement:{
+		bouncy:"Float",
+		driving:"Float",
+		flowing:"Float",
+		groovy:"Float",
+		nonrhythmic:"Float",
+		pulsing:"Float",
+		robotic:"Float",
+		running:"Float",
+		steady:"Float",
+		stomping:"Float"
+	},
+	AudioAnalysisV6MovementSegments:{
+		bouncy:"Float",
+		driving:"Float",
+		flowing:"Float",
+		groovy:"Float",
+		nonrhythmic:"Float",
+		pulsing:"Float",
+		robotic:"Float",
+		running:"Float",
+		steady:"Float",
+		stomping:"Float"
+	},
+	AudioAnalysisV6Character:{
+		bold:"Float",
+		cool:"Float",
+		epic:"Float",
+		ethereal:"Float",
+		heroic:"Float",
+		luxurious:"Float",
+		magical:"Float",
+		mysterious:"Float",
+		playful:"Float",
+		powerful:"Float",
+		retro:"Float",
+		sophisticated:"Float",
+		sparkling:"Float",
+		sparse:"Float",
+		unpolished:"Float",
+		warm:"Float"
+	},
+	AudioAnalysisV6CharacterSegments:{
+		bold:"Float",
+		cool:"Float",
+		epic:"Float",
+		ethereal:"Float",
+		heroic:"Float",
+		luxurious:"Float",
+		magical:"Float",
+		mysterious:"Float",
+		playful:"Float",
+		powerful:"Float",
+		retro:"Float",
+		sophisticated:"Float",
+		sparkling:"Float",
+		sparse:"Float",
+		unpolished:"Float",
+		warm:"Float"
+	},
+	AudioAnalysisV6ClassicalEpoch:{
+		middleAge:"Float",
+		renaissance:"Float",
+		baroque:"Float",
+		classical:"Float",
+		romantic:"Float",
+		contemporary:"Float"
+	},
+	AudioAnalysisV6ClassicalEpochSegments:{
+		middleAge:"Float",
+		renaissance:"Float",
+		baroque:"Float",
+		classical:"Float",
+		romantic:"Float",
+		contemporary:"Float"
+	},
+	AudioAnalysisV6MoodAdvanced:{
+		anxious:"Float",
+		barren:"Float",
+		cold:"Float",
+		creepy:"Float",
+		dark:"Float",
+		disturbing:"Float",
+		eerie:"Float",
+		evil:"Float",
+		fearful:"Float",
+		mysterious:"Float",
+		nervous:"Float",
+		restless:"Float",
+		spooky:"Float",
+		strange:"Float",
+		supernatural:"Float",
+		suspenseful:"Float",
+		tense:"Float",
+		weird:"Float",
+		aggressive:"Float",
+		agitated:"Float",
+		angry:"Float",
+		dangerous:"Float",
+		fiery:"Float",
+		intense:"Float",
+		passionate:"Float",
+		ponderous:"Float",
+		violent:"Float",
+		comedic:"Float",
+		eccentric:"Float",
+		funny:"Float",
+		mischievous:"Float",
+		quirky:"Float",
+		whimsical:"Float",
+		boisterous:"Float",
+		boingy:"Float",
+		bright:"Float",
+		celebratory:"Float",
+		cheerful:"Float",
+		excited:"Float",
+		feelGood:"Float",
+		fun:"Float",
+		happy:"Float",
+		joyous:"Float",
+		lighthearted:"Float",
+		perky:"Float",
+		playful:"Float",
+		rollicking:"Float",
+		upbeat:"Float",
+		calm:"Float",
+		contented:"Float",
+		dreamy:"Float",
+		introspective:"Float",
+		laidBack:"Float",
+		leisurely:"Float",
+		lyrical:"Float",
+		peaceful:"Float",
+		quiet:"Float",
+		relaxed:"Float",
+		serene:"Float",
+		soothing:"Float",
+		spiritual:"Float",
+		tranquil:"Float",
+		bittersweet:"Float",
+		blue:"Float",
+		depressing:"Float",
+		gloomy:"Float",
+		heavy:"Float",
+		lonely:"Float",
+		melancholic:"Float",
+		mournful:"Float",
+		poignant:"Float",
+		sad:"Float",
+		frightening:"Float",
+		horror:"Float",
+		menacing:"Float",
+		nightmarish:"Float",
+		ominous:"Float",
+		panicStricken:"Float",
+		scary:"Float",
+		concerned:"Float",
+		determined:"Float",
+		dignified:"Float",
+		emotional:"Float",
+		noble:"Float",
+		serious:"Float",
+		solemn:"Float",
+		thoughtful:"Float",
+		cool:"Float",
+		seductive:"Float",
+		sexy:"Float",
+		adventurous:"Float",
+		confident:"Float",
+		courageous:"Float",
+		resolute:"Float",
+		energetic:"Float",
+		epic:"Float",
+		exciting:"Float",
+		exhilarating:"Float",
+		heroic:"Float",
+		majestic:"Float",
+		powerful:"Float",
+		prestigious:"Float",
+		relentless:"Float",
+		strong:"Float",
+		triumphant:"Float",
+		victorious:"Float",
+		delicate:"Float",
+		graceful:"Float",
+		hopeful:"Float",
+		innocent:"Float",
+		intimate:"Float",
+		kind:"Float",
+		light:"Float",
+		loving:"Float",
+		nostalgic:"Float",
+		reflective:"Float",
+		romantic:"Float",
+		sentimental:"Float",
+		soft:"Float",
+		sweet:"Float",
+		tender:"Float",
+		warm:"Float",
+		anthemic:"Float",
+		aweInspiring:"Float",
+		euphoric:"Float",
+		inspirational:"Float",
+		motivational:"Float",
+		optimistic:"Float",
+		positive:"Float",
+		proud:"Float",
+		soaring:"Float",
+		uplifting:"Float"
+	},
+	AudioAnalysisV6MoodAdvancedSegments:{
+		anxious:"Float",
+		barren:"Float",
+		cold:"Float",
+		creepy:"Float",
+		dark:"Float",
+		disturbing:"Float",
+		eerie:"Float",
+		evil:"Float",
+		fearful:"Float",
+		mysterious:"Float",
+		nervous:"Float",
+		restless:"Float",
+		spooky:"Float",
+		strange:"Float",
+		supernatural:"Float",
+		suspenseful:"Float",
+		tense:"Float",
+		weird:"Float",
+		aggressive:"Float",
+		agitated:"Float",
+		angry:"Float",
+		dangerous:"Float",
+		fiery:"Float",
+		intense:"Float",
+		passionate:"Float",
+		ponderous:"Float",
+		violent:"Float",
+		comedic:"Float",
+		eccentric:"Float",
+		funny:"Float",
+		mischievous:"Float",
+		quirky:"Float",
+		whimsical:"Float",
+		boisterous:"Float",
+		boingy:"Float",
+		bright:"Float",
+		celebratory:"Float",
+		cheerful:"Float",
+		excited:"Float",
+		feelGood:"Float",
+		fun:"Float",
+		happy:"Float",
+		joyous:"Float",
+		lighthearted:"Float",
+		perky:"Float",
+		playful:"Float",
+		rollicking:"Float",
+		upbeat:"Float",
+		calm:"Float",
+		contented:"Float",
+		dreamy:"Float",
+		introspective:"Float",
+		laidBack:"Float",
+		leisurely:"Float",
+		lyrical:"Float",
+		peaceful:"Float",
+		quiet:"Float",
+		relaxed:"Float",
+		serene:"Float",
+		soothing:"Float",
+		spiritual:"Float",
+		tranquil:"Float",
+		bittersweet:"Float",
+		blue:"Float",
+		depressing:"Float",
+		gloomy:"Float",
+		heavy:"Float",
+		lonely:"Float",
+		melancholic:"Float",
+		mournful:"Float",
+		poignant:"Float",
+		sad:"Float",
+		frightening:"Float",
+		horror:"Float",
+		menacing:"Float",
+		nightmarish:"Float",
+		ominous:"Float",
+		panicStricken:"Float",
+		scary:"Float",
+		concerned:"Float",
+		determined:"Float",
+		dignified:"Float",
+		emotional:"Float",
+		noble:"Float",
+		serious:"Float",
+		solemn:"Float",
+		thoughtful:"Float",
+		cool:"Float",
+		seductive:"Float",
+		sexy:"Float",
+		adventurous:"Float",
+		confident:"Float",
+		courageous:"Float",
+		resolute:"Float",
+		energetic:"Float",
+		epic:"Float",
+		exciting:"Float",
+		exhilarating:"Float",
+		heroic:"Float",
+		majestic:"Float",
+		powerful:"Float",
+		prestigious:"Float",
+		relentless:"Float",
+		strong:"Float",
+		triumphant:"Float",
+		victorious:"Float",
+		delicate:"Float",
+		graceful:"Float",
+		hopeful:"Float",
+		innocent:"Float",
+		intimate:"Float",
+		kind:"Float",
+		light:"Float",
+		loving:"Float",
+		nostalgic:"Float",
+		reflective:"Float",
+		romantic:"Float",
+		sentimental:"Float",
+		soft:"Float",
+		sweet:"Float",
+		tender:"Float",
+		warm:"Float",
+		anthemic:"Float",
+		aweInspiring:"Float",
+		euphoric:"Float",
+		inspirational:"Float",
+		motivational:"Float",
+		optimistic:"Float",
+		positive:"Float",
+		proud:"Float",
+		soaring:"Float",
+		uplifting:"Float"
+	},
+	AudioAnalysisV6Segments:{
+		representativeSegmentIndex:"Int",
+		timestamps:"Float",
+		mood:"AudioAnalysisV6MoodSegments",
+		voice:"AudioAnalysisV6VoiceSegments",
+		instruments:"AudioAnalysisV6InstrumentsSegments",
+		advancedInstruments:"AudioAnalysisV7InstrumentsSegments",
+		advancedInstrumentsExtended:"AudioAnalysisV7ExtendedInstrumentsSegments",
+		genre:"AudioAnalysisV6GenreSegments",
+		subgenre:"AudioAnalysisV6SubgenreSegments",
+		subgenreEdm:"AudioAnalysisV6SubgenreEdmSegments",
+		valence:"Float",
+		arousal:"Float",
+		moodAdvanced:"AudioAnalysisV6MoodAdvancedSegments",
+		movement:"AudioAnalysisV6MovementSegments",
+		character:"AudioAnalysisV6CharacterSegments",
+		classicalEpoch:"AudioAnalysisV6ClassicalEpochSegments",
+		advancedGenre:"AudioAnalysisV7GenreSegments",
+		advancedSubgenre:"AudioAnalysisV7SubgenreSegments"
+	},
+	AudioAnalysisV6KeyPrediction:{
+		value:"MusicalKey",
+		confidence:"Float"
+	},
+	AudioAnalysisV6BPMPrediction:{
+		value:"Float",
+		confidence:"Float"
+	},
+	AudioAnalysisV7InstrumentsSegments:{
+		percussion:"Float",
+		synth:"Float",
+		piano:"Float",
+		acousticGuitar:"Float",
+		electricGuitar:"Float",
+		strings:"Float",
+		bass:"Float",
+		bassGuitar:"Float",
+		woodwinds:"Float",
+		brass:"Float"
+	},
+	AudioAnalysisV7InstrumentPresence:{
+		percussion:"AudioAnalysisInstrumentPresenceLabel",
+		synth:"AudioAnalysisInstrumentPresenceLabel",
+		piano:"AudioAnalysisInstrumentPresenceLabel",
+		acousticGuitar:"AudioAnalysisInstrumentPresenceLabel",
+		electricGuitar:"AudioAnalysisInstrumentPresenceLabel",
+		strings:"AudioAnalysisInstrumentPresenceLabel",
+		bass:"AudioAnalysisInstrumentPresenceLabel",
+		bassGuitar:"AudioAnalysisInstrumentPresenceLabel",
+		brass:"AudioAnalysisInstrumentPresenceLabel",
+		woodwinds:"AudioAnalysisInstrumentPresenceLabel"
+	},
+	AudioAnalysisV7ExtendedInstrumentsSegments:{
+		acousticGuitar:"Float",
+		bass:"Float",
+		bassGuitar:"Float",
+		electricGuitar:"Float",
+		percussion:"Float",
+		piano:"Float",
+		synth:"Float",
+		strings:"Float",
+		brass:"Float",
+		woodwinds:"Float",
+		tuba:"Float",
+		frenchHorn:"Float",
+		oboe:"Float",
+		mandolin:"Float",
+		cello:"Float",
+		marimba:"Float",
+		vibraphone:"Float",
+		electricPiano:"Float",
+		electricOrgan:"Float",
+		harp:"Float",
+		ukulele:"Float",
+		harpsichord:"Float",
+		churchOrgan:"Float",
+		doubleBass:"Float",
+		xylophone:"Float",
+		glockenspiel:"Float",
+		electronicDrums:"Float",
+		drumKit:"Float",
+		accordion:"Float",
+		violin:"Float",
+		flute:"Float",
+		sax:"Float",
+		trumpet:"Float",
+		celeste:"Float",
+		pizzicato:"Float",
+		banjo:"Float",
+		clarinet:"Float",
+		bells:"Float",
+		steelDrums:"Float",
+		bongoConga:"Float",
+		africanPercussion:"Float",
+		tabla:"Float",
+		sitar:"Float",
+		taiko:"Float",
+		asianFlute:"Float",
+		asianStrings:"Float",
+		luteOud:"Float"
+	},
+	AudioAnalysisV7ExtendedInstrumentPresence:{
+		acousticGuitar:"AudioAnalysisInstrumentPresenceLabel",
+		bass:"AudioAnalysisInstrumentPresenceLabel",
+		bassGuitar:"AudioAnalysisInstrumentPresenceLabel",
+		electricGuitar:"AudioAnalysisInstrumentPresenceLabel",
+		percussion:"AudioAnalysisInstrumentPresenceLabel",
+		piano:"AudioAnalysisInstrumentPresenceLabel",
+		synth:"AudioAnalysisInstrumentPresenceLabel",
+		strings:"AudioAnalysisInstrumentPresenceLabel",
+		brass:"AudioAnalysisInstrumentPresenceLabel",
+		woodwinds:"AudioAnalysisInstrumentPresenceLabel",
+		tuba:"AudioAnalysisInstrumentPresenceLabel",
+		frenchHorn:"AudioAnalysisInstrumentPresenceLabel",
+		oboe:"AudioAnalysisInstrumentPresenceLabel",
+		mandolin:"AudioAnalysisInstrumentPresenceLabel",
+		cello:"AudioAnalysisInstrumentPresenceLabel",
+		marimba:"AudioAnalysisInstrumentPresenceLabel",
+		vibraphone:"AudioAnalysisInstrumentPresenceLabel",
+		electricPiano:"AudioAnalysisInstrumentPresenceLabel",
+		electricOrgan:"AudioAnalysisInstrumentPresenceLabel",
+		harp:"AudioAnalysisInstrumentPresenceLabel",
+		ukulele:"AudioAnalysisInstrumentPresenceLabel",
+		harpsichord:"AudioAnalysisInstrumentPresenceLabel",
+		churchOrgan:"AudioAnalysisInstrumentPresenceLabel",
+		doubleBass:"AudioAnalysisInstrumentPresenceLabel",
+		xylophone:"AudioAnalysisInstrumentPresenceLabel",
+		glockenspiel:"AudioAnalysisInstrumentPresenceLabel",
+		electronicDrums:"AudioAnalysisInstrumentPresenceLabel",
+		drumKit:"AudioAnalysisInstrumentPresenceLabel",
+		accordion:"AudioAnalysisInstrumentPresenceLabel",
+		violin:"AudioAnalysisInstrumentPresenceLabel",
+		flute:"AudioAnalysisInstrumentPresenceLabel",
+		sax:"AudioAnalysisInstrumentPresenceLabel",
+		trumpet:"AudioAnalysisInstrumentPresenceLabel",
+		celeste:"AudioAnalysisInstrumentPresenceLabel",
+		pizzicato:"AudioAnalysisInstrumentPresenceLabel",
+		banjo:"AudioAnalysisInstrumentPresenceLabel",
+		clarinet:"AudioAnalysisInstrumentPresenceLabel",
+		bells:"AudioAnalysisInstrumentPresenceLabel",
+		steelDrums:"AudioAnalysisInstrumentPresenceLabel",
+		bongoConga:"AudioAnalysisInstrumentPresenceLabel",
+		africanPercussion:"AudioAnalysisInstrumentPresenceLabel",
+		tabla:"AudioAnalysisInstrumentPresenceLabel",
+		sitar:"AudioAnalysisInstrumentPresenceLabel",
+		taiko:"AudioAnalysisInstrumentPresenceLabel",
+		asianFlute:"AudioAnalysisInstrumentPresenceLabel",
+		asianStrings:"AudioAnalysisInstrumentPresenceLabel",
+		luteOud:"AudioAnalysisInstrumentPresenceLabel"
+	},
+	AudioAnalysisV7Genre:{
+		afro:"Float",
+		ambient:"Float",
+		arab:"Float",
+		asian:"Float",
+		blues:"Float",
+		childrenJingle:"Float",
+		classical:"Float",
+		electronicDance:"Float",
+		folkCountry:"Float",
+		funkSoul:"Float",
+		indian:"Float",
+		jazz:"Float",
+		latin:"Float",
+		metal:"Float",
+		pop:"Float",
+		rapHipHop:"Float",
+		reggae:"Float",
+		rnb:"Float",
+		rock:"Float",
+		singerSongwriters:"Float",
+		sound:"Float",
+		soundtrack:"Float",
+		spokenWord:"Float"
+	},
+	AudioAnalysisV7GenreSegments:{
+		afro:"Float",
+		ambient:"Float",
+		arab:"Float",
+		asian:"Float",
+		blues:"Float",
+		childrenJingle:"Float",
+		classical:"Float",
+		electronicDance:"Float",
+		folkCountry:"Float",
+		funkSoul:"Float",
+		indian:"Float",
+		jazz:"Float",
+		latin:"Float",
+		metal:"Float",
+		pop:"Float",
+		rapHipHop:"Float",
+		reggae:"Float",
+		rnb:"Float",
+		rock:"Float",
+		singerSongwriters:"Float",
+		sound:"Float",
+		soundtrack:"Float",
+		spokenWord:"Float"
+	},
+	AudioAnalysisV7SubgenreSegments:{
+		bluesRock:"Float",
+		folkRock:"Float",
+		hardRock:"Float",
+		indieAlternative:"Float",
+		psychedelicProgressiveRock:"Float",
+		punk:"Float",
+		rockAndRoll:"Float",
+		popSoftRock:"Float",
+		abstractIDMLeftfield:"Float",
+		breakbeatDnB:"Float",
+		deepHouse:"Float",
+		electro:"Float",
+		house:"Float",
+		minimal:"Float",
+		synthPop:"Float",
+		techHouse:"Float",
+		techno:"Float",
+		trance:"Float",
+		contemporaryRnB:"Float",
+		gangsta:"Float",
+		jazzyHipHop:"Float",
+		popRap:"Float",
+		trap:"Float",
+		blackMetal:"Float",
+		deathMetal:"Float",
+		doomMetal:"Float",
+		heavyMetal:"Float",
+		metalcore:"Float",
+		nuMetal:"Float",
+		disco:"Float",
+		funk:"Float",
+		gospel:"Float",
+		neoSoul:"Float",
+		soul:"Float",
+		bigBandSwing:"Float",
+		bebop:"Float",
+		contemporaryJazz:"Float",
+		easyListening:"Float",
+		fusion:"Float",
+		latinJazz:"Float",
+		smoothJazz:"Float",
+		country:"Float",
+		folk:"Float"
+	},
+	AudioAnalysisV7Subgenre:{
+		bluesRock:"Float",
+		folkRock:"Float",
+		hardRock:"Float",
+		indieAlternative:"Float",
+		psychedelicProgressiveRock:"Float",
+		punk:"Float",
+		rockAndRoll:"Float",
+		popSoftRock:"Float",
+		abstractIDMLeftfield:"Float",
+		breakbeatDnB:"Float",
+		deepHouse:"Float",
+		electro:"Float",
+		house:"Float",
+		minimal:"Float",
+		synthPop:"Float",
+		techHouse:"Float",
+		techno:"Float",
+		trance:"Float",
+		contemporaryRnB:"Float",
+		gangsta:"Float",
+		jazzyHipHop:"Float",
+		popRap:"Float",
+		trap:"Float",
+		blackMetal:"Float",
+		deathMetal:"Float",
+		doomMetal:"Float",
+		heavyMetal:"Float",
+		metalcore:"Float",
+		nuMetal:"Float",
+		disco:"Float",
+		funk:"Float",
+		gospel:"Float",
+		neoSoul:"Float",
+		soul:"Float",
+		bigBandSwing:"Float",
+		bebop:"Float",
+		contemporaryJazz:"Float",
+		easyListening:"Float",
+		fusion:"Float",
+		latinJazz:"Float",
+		smoothJazz:"Float",
+		country:"Float",
+		folk:"Float"
+	},
+	AudioAnalysisV6Result:{
+		segments:"AudioAnalysisV6Segments",
+		genre:"AudioAnalysisV6Genre",
+		genreTags:"AudioAnalysisV6GenreTags",
+		subgenre:"AudioAnalysisV6Subgenre",
+		subgenreTags:"AudioAnalysisV6SubgenreTags",
+		subgenreEdm:"AudioAnalysisV6SubgenreEdm",
+		subgenreEdmTags:"AudioAnalysisV6SubgenreEdmTags",
+		mood:"AudioAnalysisV6Mood",
+		moodTags:"AudioAnalysisV6MoodTags",
+		moodMaxTimes:"AudioAnalysisV6MaximumMoodInterval",
+		voice:"AudioAnalysisV6Voice",
+		instruments:"AudioAnalysisV6Instruments",
+		instrumentPresence:"AudioAnalysisV6InstrumentPresence",
+		instrumentTags:"AudioAnalysisV6InstrumentTags",
+		bpm:"Float",
+		bpmPrediction:"AudioAnalysisV6BPMPrediction",
+		bpmRangeAdjusted:"Float",
+		key:"MusicalKey",
+		keyPrediction:"AudioAnalysisV6KeyPrediction",
+		timeSignature:"String",
+		valence:"Float",
+		arousal:"Float",
+		energyLevel:"AudioAnalysisV6EnergyLevel",
+		energyDynamics:"AudioAnalysisV6EnergyDynamics",
+		emotionalProfile:"AudioAnalysisV6EmotionalProfile",
+		voicePresenceProfile:"AudioAnalysisV6VoicePresenceProfile",
+		emotionalDynamics:"AudioAnalysisV6EmotionalDynamics",
+		predominantVoiceGender:"AudioAnalysisV6PredominantVoiceGender",
+		musicalEraTag:"String",
+		voiceTags:"AudioAnalysisV6VoiceTags",
+		moodAdvanced:"AudioAnalysisV6MoodAdvanced",
+		moodAdvancedTags:"AudioAnalysisV6MoodAdvancedTags",
+		movement:"AudioAnalysisV6Movement",
+		movementTags:"AudioAnalysisV6MovementTags",
+		character:"AudioAnalysisV6Character",
+		characterTags:"AudioAnalysisV6CharacterTags",
+		classicalEpoch:"AudioAnalysisV6ClassicalEpoch",
+		classicalEpochTags:"AudioAnalysisV6ClassicalEpochTags",
+		transformerCaption:"String",
+		advancedGenre:"AudioAnalysisV7Genre",
+		advancedGenreTags:"AudioAnalysisV7GenreTags",
+		advancedSubgenre:"AudioAnalysisV7Subgenre",
+		advancedSubgenreTags:"AudioAnalysisV7SubgenreTags",
+		advancedInstrumentPresence:"AudioAnalysisV7InstrumentPresence",
+		advancedInstrumentTags:"AudioAnalysisV7InstrumentTags",
+		advancedInstrumentPresenceExtended:"AudioAnalysisV7ExtendedInstrumentPresence",
+		advancedInstrumentTagsExtended:"AudioAnalysisV7ExtendedInstrumentTags",
+		voiceoverExists:"Boolean",
+		voiceoverDegree:"Float",
+		freeGenreTags:"String"
+	},
+	LibraryTrack:{
+		audioAnalysisV6:"AudioAnalysisV6",
+		id:"ID",
+		title:"String",
+		externalId:"String",
+		similarLibraryTracks:"SimilarLibraryTracksResult",
+		similarTracks:"SimilarTracksResult",
+		augmentedKeywords:"AugmentedKeywordsResult",
+		brandValues:"BrandValuesResult"
+	},
+	SpotifyTrack:{
+		audioAnalysisV6:"AudioAnalysisV6",
+		id:"ID",
+		title:"String",
+		similarTracks:"SimilarTracksResult",
+		augmentedKeywords:"AugmentedKeywordsResult",
+		brandValues:"BrandValuesResult"
+	},
+	LibraryTrackNotFoundError:{
+		message:"String"
+	},
+	LibraryTrackResult:{
+		"...on LibraryTrackNotFoundError":"LibraryTrackNotFoundError",
+		"...on LibraryTrack":"LibraryTrack"
+	},
+	LibraryTrackEdge:{
+		cursor:"String",
+		node:"LibraryTrack"
+	},
+	LibraryTrackConnection:{
+		edges:"LibraryTrackEdge",
+		pageInfo:"PageInfo"
+	},
+	SimilarLibraryTracksError:{
+		message:"String",
+		code:"SimilarLibraryTracksErrorCode"
+	},
+	SimilarLibraryTracksResult:{
+		"...on SimilarLibraryTracksError":"SimilarLibraryTracksError",
+		"...on SimilarLibraryTrackConnection":"SimilarLibraryTrackConnection"
+	},
+	CratesConnection:{
+		edges:"CrateEdge",
+		pageInfo:"PageInfo"
+	},
+	CrateEdge:{
+		cursor:"String",
+		node:"Crate"
+	},
+	Crate:{
+		id:"ID",
+		name:"String"
+	},
+	CrateCreateError:{
+		message:"String",
+		code:"CrateCreateErrorCode"
+	},
+	CrateCreateResult:{
+		"...on CrateCreateSuccess":"CrateCreateSuccess",
+		"...on CrateCreateError":"CrateCreateError"
+	},
+	CrateCreateSuccess:{
+		id:"ID"
+	},
+	CrateDeleteResult:{
+		"...on CrateDeleteSuccess":"CrateDeleteSuccess",
+		"...on CrateDeleteError":"CrateDeleteError"
+	},
+	CrateDeleteSuccess:{
+		_:"Boolean"
+	},
+	CrateDeleteError:{
+		message:"String",
+		code:"CrateDeleteErrorCode"
+	},
+	CrateAddLibraryTracksResult:{
+		"...on CrateAddLibraryTracksSuccess":"CrateAddLibraryTracksSuccess",
+		"...on CrateAddLibraryTracksError":"CrateAddLibraryTracksError"
+	},
+	CrateAddLibraryTracksSuccess:{
+		addedLibraryTrackIds:"ID"
+	},
+	CrateAddLibraryTracksError:{
+		message:"String",
+		code:"CrateAddLibraryTracksErrorCode"
+	},
+	CrateRemoveLibraryTracksResult:{
+		"...on CrateRemoveLibraryTracksSuccess":"CrateRemoveLibraryTracksSuccess",
+		"...on CrateRemoveLibraryTracksError":"CrateRemoveLibraryTracksError"
+	},
+	CrateRemoveLibraryTracksSuccess:{
+		removedLibraryTrackIds:"ID"
+	},
+	CrateRemoveLibraryTracksError:{
+		message:"String",
+		code:"CrateRemoveLibraryTracksErrorCode"
+	},
+	LibraryTrackCreateSuccess:{
+		createdLibraryTrack:"LibraryTrack",
+		enqueueResult:"LibraryTrackEnqueueResult"
+	},
+	LibraryTrackCreateError:{
+		code:"LibraryTrackCreateErrorCode",
+		message:"String"
+	},
+	LibraryTrackCreateResult:{
+		"...on LibraryTrackCreateSuccess":"LibraryTrackCreateSuccess",
+		"...on LibraryTrackCreateError":"LibraryTrackCreateError"
+	},
+	LibraryTrackEnqueueSuccess:{
+		enqueuedLibraryTrack:"LibraryTrack"
+	},
+	LibraryTrackEnqueueError:{
+		code:"LibraryTrackEnqueueErrorCode",
+		message:"String"
+	},
+	LibraryTrackEnqueueResult:{
+		"...on LibraryTrackEnqueueSuccess":"LibraryTrackEnqueueSuccess",
+		"...on LibraryTrackEnqueueError":"LibraryTrackEnqueueError"
+	},
+	LibraryTracksDeleteResult:{
+		"...on LibraryTracksDeleteSuccess":"LibraryTracksDeleteSuccess",
+		"...on LibraryTracksDeleteError":"LibraryTracksDeleteError"
+	},
+	LibraryTracksDeleteError:{
+		code:"LibraryTracksDeleteErrorCode",
+		message:"String"
+	},
+	LibraryTracksDeleteSuccess:{
+		libraryTrackIds:"ID"
+	},
+	YouTubeTrackEnqueueResult:{
+		"...on YouTubeTrackEnqueueError":"YouTubeTrackEnqueueError",
+		"...on YouTubeTrackEnqueueSuccess":"YouTubeTrackEnqueueSuccess"
+	},
+	YouTubeTrackEnqueueError:{
+		message:"String",
+		code:"YouTubeTrackEnqueueErrorCode"
+	},
+	YouTubeTrackEnqueueSuccess:{
+		enqueuedLibraryTrack:"LibraryTrack"
+	},
+	SpotifyTrackError:{
+		message:"String"
+	},
+	SpotifyTrackResult:{
+		"...on SpotifyTrackError":"SpotifyTrackError",
+		"...on SpotifyTrack":"SpotifyTrack"
+	},
+	SpotifyTrackEnqueueError:{
+		message:"String"
+	},
+	SpotifyTrackEnqueueSuccess:{
+		enqueuedSpotifyTrack:"SpotifyTrack"
+	},
+	SpotifyTrackEnqueueResult:{
+		"...on SpotifyTrackEnqueueError":"SpotifyTrackEnqueueError",
+		"...on SpotifyTrackEnqueueSuccess":"SpotifyTrackEnqueueSuccess"
+	},
+	SimilarTracksError:{
+		code:"SimilarTracksErrorCode",
+		message:"String"
+	},
+	SimilarTracksEdge:{
+		cursor:"String",
+		node:"Track"
+	},
+	SimilarTracksConnection:{
+		pageInfo:"PageInfo",
+		edges:"SimilarTracksEdge"
+	},
+	SimilarTracksResult:{
+		"...on SimilarTracksError":"SimilarTracksError",
+		"...on SimilarTracksConnection":"SimilarTracksConnection"
+	},
+	KeywordSearchError:{
+		message:"String",
+		code:"KeywordSearchErrorCode"
+	},
+	KeywordSearchResult:{
+		"...on KeywordSearchConnection":"KeywordSearchConnection",
+		"...on KeywordSearchError":"KeywordSearchError"
+	},
+	Keyword:{
+		keyword:"String"
+	},
+	KeywordEdge:{
+		node:"Keyword",
+		cursor:"String"
+	},
+	KeywordConnection:{
+		pageInfo:"PageInfo",
+		edges:"KeywordEdge"
+	},
+	KeywordSearchEdge:{
+		node:"Track",
+		cursor:"String"
+	},
+	KeywordSearchConnection:{
+		pageInfo:"PageInfo",
+		edges:"KeywordSearchEdge"
+	},
+	AugmentedKeyword:{
+		keyword:"String",
+		weight:"Float"
+	},
+	AugmentedKeywords:{
+		keywords:"AugmentedKeyword"
+	},
+	AugmentedKeywordsError:{
+		message:"String",
+		code:"AugmentedKeywordsErrorCode"
+	},
+	AugmentedKeywordsResult:{
+		"...on AugmentedKeywordsError":"AugmentedKeywordsError",
+		"...on AugmentedKeywords":"AugmentedKeywords"
+	},
+	BrandValuesSuccess:{
+		values:"String"
+	},
+	SelectBrandValuesSuccess:{
+		success:"Boolean"
+	},
+	SelectBrandValuesResult:{
+		"...on BrandValuesError":"BrandValuesError",
+		"...on SelectBrandValuesSuccess":"SelectBrandValuesSuccess"
+	},
+	BrandValuesResult:{
+		"...on BrandValuesError":"BrandValuesError",
+		"...on BrandValuesSuccess":"BrandValuesSuccess",
+		"...on BrandValues":"BrandValues"
+	},
+	BrandValue:{
+		value:"String",
+		weight:"Float"
+	},
+	BrandValues:{
+		values:"BrandValue"
+	},
+	BrandValuesError:{
+		message:"String",
+		code:"BrandValuesErrorCode"
+	},
+	FreeTextSearchError:{
+		code:"FreeTextSearchErrorCode",
+		message:"String"
+	},
+	FreeTextSearchEdge:{
+		cursor:"String",
+		node:"Track"
+	},
+	FreeTextSearchConnection:{
+		pageInfo:"PageInfo",
+		edges:"FreeTextSearchEdge"
+	},
+	FreeTextSearchResult:{
+		"...on FreeTextSearchError":"FreeTextSearchError",
+		"...on FreeTextSearchConnection":"FreeTextSearchConnection"
+	},
+	LyricsSearchError:{
+		code:"LyricsSearchErrorCode",
+		message:"String"
+	},
+	LyricsSearchEdge:{
+		cursor:"String",
+		node:"Track"
+	},
+	LyricsSearchConnection:{
+		pageInfo:"PageInfo",
+		edges:"LyricsSearchEdge"
+	},
+	LyricsSearchResult:{
+		"...on LyricsSearchError":"LyricsSearchError",
+		"...on LyricsSearchConnection":"LyricsSearchConnection"
+	}
+}
+
+export const Ops = {
+query: "Query" as const,
+	mutation: "Mutation" as const,
+	subscription: "Subscription" as const
+}

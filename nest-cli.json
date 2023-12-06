@@ -3,6 +3,18 @@
   "collection": "@nestjs/schematics",
   "sourceRoot": "src",
   "compilerOptions": {
-    "deleteOutDir": true
+    "deleteOutDir": true,
+    "webpack": true
+  },
+  "projects": {
+    "cyanite-sdk": {
+      "type": "library",
+      "root": "libs/cyanite-sdk",
+      "entryFile": "index",
+      "sourceRoot": "libs/cyanite-sdk/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/cyanite-sdk/tsconfig.lib.json"
+      }
+    }
   }
 }

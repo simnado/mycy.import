@@ -16,6 +16,14 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@narendev/cyanite-sdk": [
+        "libs/cyanite-sdk/src"
+      ],
+      "@narendev/cyanite-sdk/*": [
+        "libs/cyanite-sdk/src/*"
+      ]
+    }
   }
 }
