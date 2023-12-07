@@ -13,6 +13,32 @@ export class TriggerPayload {
   youTubeUrl: string
 }
 
+export class SyncRequestItem {
+  @ApiProperty()
+  q: string
+
+  @ApiProperty()
+  provider: string
+}
+
+export class SyncResponseItem {
+  @ApiProperty()
+  id?: string
+
+  @ApiProperty()
+  status: 'pending' | 'matched' | 'unmatched' | 'scheduled' | 'conflicted' | 'analysed' | 'analysable'
+}
+
+export class SyncRequest {
+  @ApiProperty({type: SyncRequestItem, isArray: true})
+  items: SyncRequestItem[]
+}
+
+export class SyncResponse {
+  @ApiProperty({type: SyncResponseItem, isArray: true})
+  items: SyncResponseItem[]
+}
+
 
 
 @Controller()
@@ -58,6 +84,11 @@ export class AppController {
       console.log('created', match.id)
     }
     return match;
+  }
+
+  @Post('sync')
+  @ApiResponse({type : SyncResponse})
+  sync(@Body() data: SyncRequest) {
   }
 
 }
