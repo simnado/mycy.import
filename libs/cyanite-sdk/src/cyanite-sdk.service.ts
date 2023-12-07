@@ -34,7 +34,7 @@ export class CyaniteSdkService {
                             }
                         }
                     }
-                }
+                } as any
             ],
           });
 
@@ -44,12 +44,14 @@ export class CyaniteSdkService {
         return await this.agent('query')({
             libraryTrack: [{
                 id
-            }, {
+            }, 
+            {
                 ['...on LibraryTrack']: {
                     id: true,
                     externalId: true,
                     title: true,
                     audioAnalysisV6: {
+                        __typename: true,
                         ['...on AudioAnalysisV6Finished']: {
                             result: {
                                 segments: {
@@ -65,11 +67,11 @@ export class CyaniteSdkService {
                                     // todo: add fields
                                 }
                             }
-                        }
+                        },
                     }
                 }
-            }]
-        })
+            } as any
+        ]})
     }
 
     async triggerSongAnalysisFromYouTube(url: string) {

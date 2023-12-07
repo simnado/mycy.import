@@ -5,7 +5,6 @@ import { GeniusService, SongSearchResult } from './genius/genius.service';
 import { DiscogsService } from './discogs/discogs.service';
 import { Match } from './matching/match/match.entity';
 import { MatchService } from './matching/match/match.service';
-import { CyaniteSdkService, CyaniteWebhookPayload } from '@narendev/cyanite-sdk';
 import { getOnConflictReturningFields } from '@mikro-orm/core';
 
 
@@ -23,7 +22,6 @@ export class AppController {
     private readonly geniusSrv: GeniusService, 
     private discogsSrv: DiscogsService, 
     private matchSrv: MatchService,
-    private cyaniteSrv: CyaniteSdkService,
     ) {}
 
   @Get('')
@@ -62,28 +60,4 @@ export class AppController {
     return match;
   }
 
-  @Get('cy/library')
-  getCyaniteLibrary(){
-    return this.cyaniteSrv.getLibrary({});
-  }
-
-  @Get('cy/song/:id')
-  @ApiParam({type: String, name: 'id'})
-  getSong(@Param('id') id) {
-    return this.cyaniteSrv.getSongAnalysis(id)
-  }
-
-  @Post('cy/trigger')
-  async triggerProcessing(@Body() data: TriggerPayload) {
-    const res = await this.cyaniteSrv.triggerSongAnalysisFromYouTube(data.youTubeUrl)
-    if (res.youTubeTrackEnqueue.__typename === 'YouTubeTrackEnqueueError') {
-      console.warn(res.youTubeTrackEnqueue)
-    }
-    return res
-  }
-
-  @Post('cy/webhook')
-  webhook(@Body() data: CyaniteWebhookPayload) {
-    console.log(data)
-  }
 }
