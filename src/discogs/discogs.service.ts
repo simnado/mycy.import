@@ -3,10 +3,11 @@ import { Client } from 'disconnect';
 
 @Injectable()
 export class DiscogsService {
+  protected readonly db = new Client({
+    userToken: 'HrLSqumSvYtAEEgLVvmEfoilelmrGWEdYJEViJbB',
+  }).database();
 
-    protected readonly db = new Client({userToken: 'HrLSqumSvYtAEEgLVvmEfoilelmrGWEdYJEViJbB'}).database();
-
-    async search(q: string) {
-        return this.db.search(q)
-    }
+  async search(q: string) {
+    return this.db.search(q);
+  }
 }

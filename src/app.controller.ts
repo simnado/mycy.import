@@ -7,56 +7,60 @@ import { Match } from './matching/match/match.entity';
 import { MatchService } from './matching/match/match.service';
 import { getOnConflictReturningFields } from '@mikro-orm/core';
 
-
 export class TriggerPayload {
   @ApiProperty()
-  youTubeUrl: string
+  youTubeUrl: string;
 }
 
 export class SyncRequestItem {
   @ApiProperty()
-  q: string
+  q: string;
 
   @ApiProperty()
-  provider: string
+  provider: string;
 }
 
 export class SyncResponseItem {
   @ApiProperty()
-  id?: string
+  id?: string;
 
   @ApiProperty()
-  status: 'pending' | 'matched' | 'unmatched' | 'scheduled' | 'conflicted' | 'analysed' | 'analysable'
+  status:
+    | 'pending'
+    | 'matched'
+    | 'unmatched'
+    | 'scheduled'
+    | 'conflicted'
+    | 'analysed'
+    | 'analysable';
 }
 
 export class SyncRequest {
-  @ApiProperty({type: SyncRequestItem, isArray: true})
-  items: SyncRequestItem[]
+  @ApiProperty({ type: SyncRequestItem, isArray: true })
+  items: SyncRequestItem[];
 }
 
 export class SyncResponse {
-  @ApiProperty({type: SyncResponseItem, isArray: true})
-  items: SyncResponseItem[]
+  @ApiProperty({ type: SyncResponseItem, isArray: true })
+  items: SyncResponseItem[];
 }
-
-
 
 @Controller()
 export class AppController {
   constructor(
-    private readonly appService: AppService, 
-    private readonly geniusSrv: GeniusService, 
-    private discogsSrv: DiscogsService, 
+    private readonly appService: AppService,
+    private readonly geniusSrv: GeniusService,
+    private discogsSrv: DiscogsService,
     private matchSrv: MatchService,
-    ) {}
+  ) {}
 
   @Get('')
   hello() {
     return this.discogsSrv.search('Industry Baby');
   }
 
-  @ApiQuery({name: 'q', type: String})
-  @ApiResponse({type: SongSearchResult, isArray: true})
+  @ApiQuery({ name: 'q', type: String })
+  @ApiResponse({ type: SongSearchResult, isArray: true })
   @Get('match/query')
   matchByQuery(@Query('q') q) {
     return this.geniusSrv.search(q);
@@ -70,25 +74,22 @@ export class AppController {
 
   @Get('match/csv')
   matchByTable(): string {
-    return 'tba'
+    return 'tba';
   }
 
-
   @Get('hit/:id')
-  @ApiResponse({type: Match})
+  @ApiResponse({ type: Match })
   async hitById(@Param('id') geniusId: string) {
-    let match = await this.matchSrv.findOne(geniusId)
-    if(!match) {
+    let match = await this.matchSrv.findOne(geniusId);
+    if (!match) {
       const newMatch = await this.geniusSrv.details(geniusId);
       match = await this.matchSrv.createOne(newMatch);
-      console.log('created', match.id)
+      console.log('created', match.id);
     }
     return match;
   }
 
   @Post('sync')
-  @ApiResponse({type : SyncResponse})
-  sync(@Body() data: SyncRequest) {
-  }
-
+  @ApiResponse({ type: SyncResponse })
+  sync(@Body() data: SyncRequest) {}
 }

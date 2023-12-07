@@ -20,12 +20,18 @@ import { CyaniteSdkModule } from '@narendev/cyanite-sdk';
       entities: [Match],
       synchronize: true,
       ssl: true,
-      "extra": { poolSize: 10 }
+      extra: { poolSize: 10 },
     }),
     TypeOrmModule.forFeature([Match]),
-    CyaniteSdkModule
+    CyaniteSdkModule,
   ],
   controllers: [AppController],
-  providers: [AppService, GeniusService, DiscogsService, MatchService, JobService],
+  providers: [
+    AppService,
+    GeniusService,
+    DiscogsService,
+    MatchService,
+    JobService,
+  ],
 })
 export class AppModule {}

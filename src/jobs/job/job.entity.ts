@@ -11,6 +11,6 @@ export class Job {
   @Column()
   youTubeId: string;
 
-  @Column({nullable: true})
+  @Column({ nullable: true })
   result: any;
 }

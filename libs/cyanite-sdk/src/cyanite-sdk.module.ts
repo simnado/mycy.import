@@ -5,6 +5,6 @@ import { CyaniteController } from './cyanite.controller';
 @Module({
   providers: [CyaniteSdkService],
   exports: [CyaniteSdkService],
-  controllers: [CyaniteController]
+  controllers: [CyaniteController],
 })
 export class CyaniteSdkModule {}

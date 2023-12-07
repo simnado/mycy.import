@@ -7,33 +7,34 @@ import { CyaniteSdkService } from './cyanite-sdk.service';
 @ApiTags('Cyanite')
 @Controller('cy')
 export class CyaniteController {
-
-    constructor(@Inject(CyaniteSdkService) private readonly cyaniteSrv: CyaniteSdkService) {
-
-    }
+  constructor(
+    @Inject(CyaniteSdkService) private readonly cyaniteSrv: CyaniteSdkService,
+  ) {}
 
   @Get('library')
-  getCyaniteLibrary(){
+  getCyaniteLibrary() {
     return this.cyaniteSrv.getLibrary({});
   }
 
   @Get('song/:id')
-  @ApiParam({type: String, name: 'id'})
+  @ApiParam({ type: String, name: 'id' })
   getSong(@Param('id') id) {
-    return this.cyaniteSrv.getSongAnalysis(id)
+    return this.cyaniteSrv.getSongAnalysis(id);
   }
 
   @Post('trigger')
   async triggerProcessing(@Body() data: TriggerPayload) {
-    const res = await this.cyaniteSrv.triggerSongAnalysisFromYouTube(data.youTubeUrl)
+    const res = await this.cyaniteSrv.triggerSongAnalysisFromYouTube(
+      data.youTubeUrl,
+    );
     if (res.youTubeTrackEnqueue.__typename === 'YouTubeTrackEnqueueError') {
-      console.warn(res.youTubeTrackEnqueue)
+      console.warn(res.youTubeTrackEnqueue);
     }
-    return res
+    return res;
   }
 
   @Post('webhook')
   webhook(@Body() data: CyaniteWebhookPayload) {
-    console.log(data)
+    console.log(data);
   }
 }
