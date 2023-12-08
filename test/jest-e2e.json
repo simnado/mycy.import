@@ -1,9 +1,5 @@
 {
-  "moduleFileExtensions": [
-    "js",
-    "json",
-    "ts"
-  ],
+  "moduleFileExtensions": ["js", "json", "ts"],
   "rootDir": ".",
   "testEnvironment": "node",
   "testRegex": ".e2e-spec.ts$",
@@ -12,6 +8,8 @@
   },
   "moduleNameMapper": {
     "@narendev/cyanite-sdk/(.*)": "<rootDir>/../libs/cyanite-sdk/src/$1",
-    "@narendev/cyanite-sdk": "<rootDir>/../libs/cyanite-sdk/src"
+    "@narendev/cyanite-sdk": "<rootDir>/../libs/cyanite-sdk/src",
+    "@narendev/apple-music-sdk/(.*)": "<rootDir>/../libs/apple-music-sdk/src/$1",
+    "@narendev/apple-music-sdk": "<rootDir>/../libs/apple-music-sdk/src"
   }
 }

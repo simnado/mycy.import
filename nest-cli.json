@@ -15,6 +15,15 @@
       "compilerOptions": {
         "tsConfigPath": "libs/cyanite-sdk/tsconfig.lib.json"
       }
+    },
+    "apple-music/sdk": {
+      "type": "library",
+      "root": "libs/apple-music/sdk",
+      "entryFile": "index",
+      "sourceRoot": "libs/apple-music/sdk/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/apple-music/sdk/tsconfig.lib.json"
+      }
     }
   }
 }

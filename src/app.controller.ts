@@ -1,11 +1,17 @@
 import { Body, Controller, Get, Param, Query, Post } from '@nestjs/common';
-import { AppService } from './app.service';
 import { ApiParam, ApiQuery, ApiResponse, ApiProperty } from '@nestjs/swagger';
 import { GeniusService, SongSearchResult } from './genius/genius.service';
 import { DiscogsService } from './discogs/discogs.service';
 import { Match } from './matching/match/match.entity';
 import { MatchService } from './matching/match/match.service';
-import { getOnConflictReturningFields } from '@mikro-orm/core';
+import { AppleMusicService } from '@narendev/apple-music-sdk';
+
+export enum SyncInputProvider {
+  Itunes = 'Itunes',
+  AppleMusic = 'AppleMusic',
+  Spotify = 'Spotify',
+  YouTube = 'YouTube',
+}
 
 export class TriggerPayload {
   @ApiProperty()
@@ -16,8 +22,8 @@ export class SyncRequestItem {
   @ApiProperty()
   q: string;
 
-  @ApiProperty()
-  provider: string;
+  @ApiProperty({ enum: SyncInputProvider, enumName: 'SyncInputProvider' })
+  provider: SyncInputProvider;
 }
 
 export class SyncResponseItem {
@@ -48,7 +54,7 @@ export class SyncResponse {
 @Controller()
 export class AppController {
   constructor(
-    private readonly appService: AppService,
+    private readonly appleMusicSrv: AppleMusicService,
     private readonly geniusSrv: GeniusService,
     private discogsSrv: DiscogsService,
     private matchSrv: MatchService,
@@ -66,10 +72,11 @@ export class AppController {
     return this.geniusSrv.search(q);
   }
 
+  @ApiQuery({ name: 'url', type: String })
   @Get('match/link')
-  matchByLink(@Query('url') url): string {
-    // todo: support genius, apple music, youtube and spotify links
-    return 'tba';
+  matchByLink(@Query('url') url) {
+    const syncItem = this.appleMusicSrv.toSyncItem(url);
+    return syncItem;
   }
 
   @Get('match/csv')

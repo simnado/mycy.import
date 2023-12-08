@@ -10,6 +10,7 @@ import { MatchService } from './matching/match/match.service';
 import { JobService } from './jobs/job/job.service';
 import { Match } from './matching/match/match.entity';
 import { CyaniteSdkModule } from '@narendev/cyanite-sdk';
+import { AppleMusicModule } from '@narendev/apple-music-sdk';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { CyaniteSdkModule } from '@narendev/cyanite-sdk';
     }),
     TypeOrmModule.forFeature([Match]),
     CyaniteSdkModule,
+    AppleMusicModule,
   ],
   controllers: [AppController],
   providers: [
