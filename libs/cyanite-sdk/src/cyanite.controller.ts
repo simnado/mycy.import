@@ -1,8 +1,25 @@
-import { Body, Controller, Get, Inject, Param, Post } from '@nestjs/common';
-import { ApiParam, ApiTags } from '@nestjs/swagger';
-import { TriggerPayload } from 'src/app.controller';
+import {
+  Body,
+  Controller,
+  Get,
+  Inject,
+  Param,
+  Post,
+  PreconditionFailedException,
+  Query,
+  UnprocessableEntityException,
+} from '@nestjs/common';
+import { ApiParam, ApiProperty, ApiQuery, ApiTags } from '@nestjs/swagger';
 import { CyaniteWebhookPayload } from './models';
 import { CyaniteSdkService } from './cyanite-sdk.service';
+
+export class TriggerPayload {
+  @ApiProperty()
+  youTubeUrl?: string;
+
+  @ApiProperty()
+  spotifyId?: string;
+}
 
 @ApiTags('Cyanite')
 @Controller('cy')
@@ -16,21 +33,41 @@ export class CyaniteController {
     return this.cyaniteSrv.getLibrary({});
   }
 
-  @Get('song/:id')
+  @Get('library/:id')
   @ApiParam({ type: String, name: 'id' })
   getSong(@Param('id') id) {
-    return this.cyaniteSrv.getSongAnalysis(id);
+    return this.cyaniteSrv.getSongAnalysisFromLibrary(id);
   }
 
-  @Post('trigger')
+  @Get('lookup')
+  @ApiQuery({ type: String, name: 'spotifyId' })
+  getSpotifyAnalysis(@Query('spotifyId') id) {
+    return this.cyaniteSrv.getSongAnalysisFromSpotify(id);
+  }
+
+  @Post('analyse')
   async triggerProcessing(@Body() data: TriggerPayload) {
-    const res = await this.cyaniteSrv.triggerSongAnalysisFromYouTube(
-      data.youTubeUrl,
-    );
-    if (res.youTubeTrackEnqueue.__typename === 'YouTubeTrackEnqueueError') {
-      console.warn(res.youTubeTrackEnqueue);
+    if (data.spotifyId) {
+      const res = await this.cyaniteSrv.triggerSongAnalysisFromSpotify(
+        data.spotifyId,
+      );
+      if (res.spotifyTrackEnqueue.__typename === 'SpotifyTrackEnqueueError') {
+        console.warn(res.spotifyTrackEnqueue);
+      }
+      return res;
+    } else if (data.youTubeUrl) {
+      const res = await this.cyaniteSrv.triggerSongAnalysisFromYouTube(
+        data.youTubeUrl,
+      );
+      if (res.youTubeTrackEnqueue.__typename === 'YouTubeTrackEnqueueError') {
+        console.warn(res.youTubeTrackEnqueue);
+      }
+      return res;
+    } else {
+      throw new UnprocessableEntityException(
+        'neither youTubeId nor spotifyId was set',
+      );
     }
-    return res;
   }
 
   @Post('webhook')

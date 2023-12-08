@@ -13,23 +13,28 @@ export enum SyncInputProvider {
   YouTube = 'YouTube',
 }
 
-export class TriggerPayload {
-  @ApiProperty()
-  youTubeUrl: string;
-}
-
 export class SyncRequestItem {
   @ApiProperty()
   q: string;
+}
 
+export class SyncRequestGroup {
   @ApiProperty({ enum: SyncInputProvider, enumName: 'SyncInputProvider' })
-  provider: SyncInputProvider;
+  provider?: SyncInputProvider;
+
+  @ApiProperty({ type: SyncRequestItem, isArray: true })
+  items: SyncRequestItem[];
 }
 
 export class SyncResponseItem {
   @ApiProperty()
   id?: string;
 
+  @ApiProperty()
+  requestIdx: number;
+}
+
+export class SyncResponseGroup {
   @ApiProperty()
   status:
     | 'pending'
@@ -39,16 +44,22 @@ export class SyncResponseItem {
     | 'conflicted'
     | 'analysed'
     | 'analysable';
+
+  @ApiProperty({ type: SyncResponseItem, isArray: true })
+  items: SyncResponseItem[];
 }
 
 export class SyncRequest {
-  @ApiProperty({ type: SyncRequestItem, isArray: true })
-  items: SyncRequestItem[];
+  @ApiProperty({ type: SyncRequestGroup, isArray: true })
+  groups: SyncRequestGroup[];
 }
 
 export class SyncResponse {
-  @ApiProperty({ type: SyncResponseItem, isArray: true })
-  items: SyncResponseItem[];
+  @ApiProperty()
+  syncId: string;
+
+  @ApiProperty({ type: SyncResponseGroup, isArray: true })
+  items: SyncResponseGroup[];
 }
 
 @Controller()
@@ -77,11 +88,6 @@ export class AppController {
   matchByLink(@Query('url') url) {
     const syncItem = this.appleMusicSrv.toSyncItem(url);
     return syncItem;
-  }
-
-  @Get('match/csv')
-  matchByTable(): string {
-    return 'tba';
   }
 
   @Get('hit/:id')

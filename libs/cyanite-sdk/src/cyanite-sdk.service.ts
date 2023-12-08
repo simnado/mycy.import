@@ -1,6 +1,44 @@
 import { Injectable } from '@nestjs/common';
 import { Chain, ModelTypes, Selector, ValueTypes } from './sdk/zeus';
 
+const audioAnalysisV6CompleteFragment: ValueTypes['AudioAnalysisV6'] = {
+  __typename: true,
+  ['...on AudioAnalysisV6Finished']: {
+    result: {
+      segments: {
+        representativeSegmentIndex: true,
+        timestamps: true,
+        // todo: add values
+      },
+      genre: {
+        ambient: true,
+        blues: true,
+        classical: true,
+        electronicDance: true,
+        folkCountry: true,
+        funkSoul: true,
+        jazz: true,
+        latin: true,
+        metal: true,
+        pop: true,
+        rapHipHop: true,
+        reggae: true,
+        rnb: true,
+        rock: true,
+        singerSongwriter: true,
+      },
+      genreTags: true,
+      //todo: missing fields
+      bpmRangeAdjusted: true,
+    },
+  },
+  ['...on AudioAnalysisV6Failed']: {
+    error: {
+      message: true,
+    },
+  },
+};
+
 @Injectable()
 export class CyaniteSdkService {
   public readonly gqlUrl = 'https://api.cyanite.ai/graphql';
@@ -38,7 +76,28 @@ export class CyaniteSdkService {
     });
   }
 
-  async getSongAnalysis(id: string) {
+  async getSongAnalysisFromSpotify(spotifyId) {
+    return await this.agent('query')({
+      spotifyTrack: [
+        {
+          id: spotifyId,
+        },
+        {
+          __typename: true,
+          ['...on SpotifyTrackError']: {
+            message: true,
+          },
+          ['...on SpotifyTrack']: {
+            id: true,
+            title: true,
+            audioAnalysisV6: audioAnalysisV6CompleteFragment,
+          },
+        },
+      ],
+    });
+  }
+
+  async getSongAnalysisFromLibrary(id: string) {
     return await this.agent('query')({
       libraryTrack: [
         {
@@ -49,25 +108,7 @@ export class CyaniteSdkService {
             id: true,
             externalId: true,
             title: true,
-            audioAnalysisV6: {
-              __typename: true,
-              ['...on AudioAnalysisV6Finished']: {
-                result: {
-                  segments: {
-                    representativeSegmentIndex: true,
-                    timestamps: true,
-                    // todo: add values
-                  },
-                  genre: {
-                    ambient: true,
-                    blues: true,
-                    classical: true,
-                    country: true,
-                    // todo: add fields
-                  },
-                },
-              },
-            },
+            audioAnalysisV6: audioAnalysisV6CompleteFragment,
           },
         } as any,
       ],
@@ -87,11 +128,36 @@ export class CyaniteSdkService {
           ['...on YouTubeTrackEnqueueSuccess']: {
             enqueuedLibraryTrack: {
               id: true,
+              title: true,
             },
           },
           ['...on YouTubeTrackEnqueueError']: {
             code: true,
             message: true,
+          },
+        },
+      ],
+    });
+  }
+
+  async triggerSongAnalysisFromSpotify(spotifyId: string) {
+    return await this.agent('mutation')({
+      spotifyTrackEnqueue: [
+        {
+          input: {
+            spotifyTrackId: spotifyId,
+          },
+        },
+        {
+          __typename: true,
+          ['...on SpotifyTrackEnqueueError']: {
+            message: true,
+          },
+          ['...on SpotifyTrackEnqueueSuccess']: {
+            enqueuedSpotifyTrack: {
+              id: true,
+              title: true,
+            },
           },
         },
       ],
