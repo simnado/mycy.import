@@ -24,6 +24,15 @@
       "compilerOptions": {
         "tsConfigPath": "libs/apple-music/sdk/tsconfig.lib.json"
       }
+    },
+    "spotify-sdk": {
+      "type": "library",
+      "root": "libs/spotify-sdk",
+      "entryFile": "index",
+      "sourceRoot": "libs/spotify-sdk/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/spotify-sdk/tsconfig.lib.json"
+      }
     }
   }
 }

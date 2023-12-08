@@ -5,6 +5,7 @@ import { DiscogsService } from './discogs/discogs.service';
 import { Match } from './matching/match/match.entity';
 import { MatchService } from './matching/match/match.service';
 import { AppleMusicService } from '@narendev/apple-music-sdk';
+import { SpotifyService } from '@narendev/spotify-sdk';
 
 export enum SyncInputProvider {
   Itunes = 'Itunes',
@@ -66,6 +67,7 @@ export class SyncResponse {
 export class AppController {
   constructor(
     private readonly appleMusicSrv: AppleMusicService,
+    private readonly spotifySrv: SpotifyService,
     private readonly geniusSrv: GeniusService,
     private discogsSrv: DiscogsService,
     private matchSrv: MatchService,
@@ -86,7 +88,8 @@ export class AppController {
   @ApiQuery({ name: 'url', type: String })
   @Get('match/link')
   matchByLink(@Query('url') url) {
-    const syncItem = this.appleMusicSrv.toSyncItem(url);
+    const syncItem =
+      this.spotifySrv.toSyncItem(url) ?? this.appleMusicSrv.toSyncItem(url);
     return syncItem;
   }
 

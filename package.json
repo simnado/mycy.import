@@ -83,7 +83,8 @@
     ],
     "moduleNameMapper": {
       "^@narendev/cyanite-sdk(|/.*)$": "<rootDir>/libs/cyanite-sdk/src/$1",
-      "^@narendev/apple-music/sdk(|/.*)$": "<rootDir>/libs/apple-music/sdk/src/$1"
+      "^@narendev/apple-music/sdk(|/.*)$": "<rootDir>/libs/apple-music/sdk/src/$1",
+      "^@narendev/spotify-sdk(|/.*)$": "<rootDir>/libs/spotify-sdk/src/$1"
     }
   }
 }

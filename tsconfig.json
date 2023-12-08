@@ -18,10 +18,24 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@narendev/cyanite-sdk": ["libs/cyanite-sdk/src"],
-      "@narendev/cyanite-sdk/*": ["libs/cyanite-sdk/src/*"],
-      "@narendev/apple-music-sdk": ["libs/apple-music-sdk/src"],
-      "@narendev/apple-music-sdk/*": ["libs/apple-music-sdk/src/*"]
+      "@narendev/cyanite-sdk": [
+        "libs/cyanite-sdk/src"
+      ],
+      "@narendev/cyanite-sdk/*": [
+        "libs/cyanite-sdk/src/*"
+      ],
+      "@narendev/apple-music-sdk": [
+        "libs/apple-music-sdk/src"
+      ],
+      "@narendev/apple-music-sdk/*": [
+        "libs/apple-music-sdk/src/*"
+      ],
+      "@narendev/spotify-sdk": [
+        "libs/spotify-sdk/src"
+      ],
+      "@narendev/spotify-sdk/*": [
+        "libs/spotify-sdk/src/*"
+      ]
     }
   }
 }
