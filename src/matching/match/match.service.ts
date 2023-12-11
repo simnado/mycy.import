@@ -1,7 +1,7 @@
 import { InjectRepository } from '@mikro-orm/nestjs';
 import { Injectable } from '@nestjs/common';
 import { MatchedSong } from './match.entity';
-import { Repository } from 'typeorm';
+import { FindOptions, FindOptionsWhere, In, Like, Repository } from 'typeorm';
 
 @Injectable()
 export class MatchService {
@@ -10,12 +10,16 @@ export class MatchService {
     private repository: Repository<MatchedSong>,
   ) {}
 
-  findMany() {
-    return this.repository.find();
+  findMany(options: { geniusIds?: string[] }) {
+    const filterOptions: FindOptionsWhere<MatchedSong> = {};
+    if (options.geniusIds) {
+      filterOptions.geniusId = In(options.geniusIds);
+    }
+    return this.repository.find({ where: filterOptions });
   }
 
-  findOne(id: string): Promise<MatchedSong | null> {
-    return this.repository.findOneBy({ geniusId: id });
+  findOne(id: number): Promise<MatchedSong | null> {
+    return this.repository.findOneBy({ id: id });
   }
 
   createOne(data: Partial<MatchedSong>) {

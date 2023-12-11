@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Param, Query, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Query,
+  Post,
+  PreconditionFailedException,
+} from '@nestjs/common';
 import { ApiParam, ApiQuery, ApiResponse, ApiProperty } from '@nestjs/swagger';
 import { GeniusService } from './genius/genius.service';
 import { DiscogsService } from './discogs/discogs.service';
@@ -6,6 +14,7 @@ import { MatchedSong } from './matching/match/match.entity';
 import { MatchService } from './matching/match/match.service';
 import { AppleMusicService } from '@narendev/apple-music-sdk';
 import { SpotifyService } from '@narendev/spotify-sdk';
+import { AppService } from './app.service';
 
 export enum SyncInputProvider {
   Itunes = 'Itunes',
@@ -14,17 +23,12 @@ export enum SyncInputProvider {
   YouTube = 'YouTube',
 }
 
-export class SyncRequestItem {
-  @ApiProperty()
-  q: string;
-}
-
 export class SyncRequestGroup {
-  @ApiProperty({ enum: SyncInputProvider, enumName: 'SyncInputProvider' })
-  provider?: SyncInputProvider;
+  @ApiProperty()
+  geniusId?: string;
 
-  @ApiProperty({ type: SyncRequestItem, isArray: true })
-  items: SyncRequestItem[];
+  @ApiProperty()
+  priority: number;
 }
 
 export class SyncResponseItem {
@@ -52,7 +56,7 @@ export class SyncResponseGroup {
 
 export class SyncRequest {
   @ApiProperty({ type: SyncRequestGroup, isArray: true })
-  groups: SyncRequestGroup[];
+  items: SyncRequestGroup[];
 }
 
 export class SyncResponse {
@@ -71,6 +75,7 @@ export class AppController {
     private readonly geniusSrv: GeniusService,
     private discogsSrv: DiscogsService,
     private matchSrv: MatchService,
+    private appSrv: AppService,
   ) {}
 
   @Get('')
@@ -81,8 +86,25 @@ export class AppController {
   @ApiQuery({ name: 'q', type: String })
   @ApiResponse({ type: MatchedSong, isArray: true })
   @Get('match/query')
-  matchByQuery(@Query('q') q) {
-    return this.geniusSrv.search(q);
+  async matchByQuery(@Query('q') q) {
+    const geniusRes = await this.geniusSrv.search(q);
+
+    const geniusId2dbId = new Map<string, number>();
+
+    const dbMatches = await this.matchSrv.findMany({
+      geniusIds: geniusRes.map((i) => i.geniusId),
+    });
+    for (const item of dbMatches) {
+      geniusId2dbId.set(item.geniusId, item.id);
+    }
+
+    for (const res of geniusRes) {
+      Object.assign(res, {
+        id: geniusId2dbId.get(String(res.geniusId)) ?? undefined,
+      });
+    }
+
+    return geniusRes;
   }
 
   @ApiQuery({ name: 'url', type: String })
@@ -95,19 +117,22 @@ export class AppController {
 
   @Get('hit/:id')
   @ApiResponse({ type: MatchedSong })
-  async hitById(@Param('id') geniusId: string) {
-    let match = await this.matchSrv.findOne(geniusId);
-    if (!match) {
-      const newMatch = await this.geniusSrv.details(geniusId, {
-        withRelations: true,
-      });
-      match = await this.matchSrv.createOne(newMatch);
-      console.log('created', match.id);
-    }
+  async hitById(@Param('id') id: string) {
+    let match = await this.matchSrv.findOne(Number(id));
     return match;
   }
 
   @Post('sync')
   @ApiResponse({ type: SyncResponse })
-  sync(@Body() data: SyncRequest) {}
+  sync(@Body() data: SyncRequest) {
+    console.log(data);
+    const { items } = data;
+    if (items.length > 10) {
+      throw new PreconditionFailedException(
+        'maximum number of items per sync request is 10',
+      );
+    }
+
+    return items.map((i) => this.appSrv.syncItems(items));
+  }
 }

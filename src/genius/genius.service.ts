@@ -224,7 +224,7 @@ export class GeniusService {
 
   protected mapSong(song: any) {
     return {
-      geniusId: song.id,
+      geniusId: String(song.id),
       title: song.title,
       artist: song.artist_names,
       releaseDate: song.release_date,

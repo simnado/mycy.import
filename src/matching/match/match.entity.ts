@@ -70,24 +70,24 @@ export type Album = {
 @Entity()
 export class MatchedSong extends Song {
   @ApiProperty()
-  @Column()
+  @Column({ unique: true })
   geniusId: string;
 
-  @Column({ nullable: true })
+  @Column({ unique: true, nullable: true })
   musicBrainzId?: string;
 
-  @Column({ nullable: true })
+  @Column({ unique: true, nullable: true })
   discogsId?: string;
 
-  @Column()
+  @Column({ unique: true })
   spotifyId?: string;
 
-  @Column({ default: true })
+  @Column({ unique: true, nullable: true })
   youTubeId?: boolean;
 
-  @Column({ default: true })
+  @Column({ unique: true, nullable: true })
   appleMusicId?: boolean;
 
-  @Column({ nullable: true })
+  @Column({ unique: true, nullable: true })
   isrc?: string;
 }
