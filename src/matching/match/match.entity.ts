@@ -15,28 +15,48 @@ export type LegalPerson = {
 };
 
 export class Song {
-  id: string;
+  @PrimaryGeneratedColumn()
+  id: number;
 
+  @Column()
   @ApiProperty()
   title: string;
 
+  @Column()
   @ApiProperty()
   artist: string;
 
+  @Column()
   @ApiProperty()
   releaseDate: string;
 
+  @Column()
   @ApiProperty()
   description: string;
 
+  @Column()
   @ApiProperty()
   language: string;
 
+  @Column()
   @ApiProperty()
-  recordingLocation: string;
+  recordingLocation?: string;
 
+  @Column()
   @ApiProperty()
   imageUrl: string;
+
+  @Column({ type: 'json' })
+  relatedArtists?: { roles: string[]; artist: LegalPerson }[];
+
+  @Column({ type: 'json' })
+  relatedCompanies?: { roles: string[]; company: LegalPerson }[];
+
+  @Column({ type: 'json' })
+  relatedAlbums?: { roles: string[]; album: Album }[];
+
+  @Column({ type: 'json' })
+  relatedSongs?: { roles: string[]; song: Song }[];
 }
 
 export type Album = {
@@ -48,10 +68,7 @@ export type Album = {
 };
 
 @Entity()
-export class Match {
-  @PrimaryGeneratedColumn()
-  id: number;
-
+export class MatchedSong extends Song {
   @ApiProperty()
   @Column()
   geniusId: string;
@@ -71,22 +88,6 @@ export class Match {
   @Column({ default: true })
   appleMusicId?: boolean;
 
-  @Column({ type: 'json' })
-  media: MatchMedia[];
-
-  @ApiProperty({ type: Song })
-  @Column({ type: 'json' })
-  song: Song;
-
-  @Column({ type: 'json' })
-  relatedArtists: { roles: string[]; artist: LegalPerson }[];
-
-  @Column({ type: 'json' })
-  relatedCompanies: { roles: string[]; company: LegalPerson }[];
-
-  @Column({ type: 'json' })
-  relatedAlbums: { roles: string[]; album: Album }[];
-
-  @Column({ type: 'json' })
-  relatedSongs: { roles: string[]; song: Song }[];
+  @Column({ nullable: true })
+  isrc?: string;
 }

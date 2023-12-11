@@ -37,6 +37,9 @@ const audioAnalysisV6CompleteFragment: ValueTypes['AudioAnalysisV6'] = {
       message: true,
     },
   },
+  ['...on AudioAnalysisV6NotStarted']: {},
+  ['...on AudioAnalysisV6Enqueued']: {},
+  ['...on AudioAnalysisV6Processing']: {},
 };
 
 @Injectable()

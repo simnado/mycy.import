@@ -1,8 +1,8 @@
 import { Body, Controller, Get, Param, Query, Post } from '@nestjs/common';
 import { ApiParam, ApiQuery, ApiResponse, ApiProperty } from '@nestjs/swagger';
-import { GeniusService, SongSearchResult } from './genius/genius.service';
+import { GeniusService } from './genius/genius.service';
 import { DiscogsService } from './discogs/discogs.service';
-import { Match } from './matching/match/match.entity';
+import { MatchedSong } from './matching/match/match.entity';
 import { MatchService } from './matching/match/match.service';
 import { AppleMusicService } from '@narendev/apple-music-sdk';
 import { SpotifyService } from '@narendev/spotify-sdk';
@@ -79,7 +79,7 @@ export class AppController {
   }
 
   @ApiQuery({ name: 'q', type: String })
-  @ApiResponse({ type: SongSearchResult, isArray: true })
+  @ApiResponse({ type: MatchedSong, isArray: true })
   @Get('match/query')
   matchByQuery(@Query('q') q) {
     return this.geniusSrv.search(q);
@@ -94,11 +94,13 @@ export class AppController {
   }
 
   @Get('hit/:id')
-  @ApiResponse({ type: Match })
+  @ApiResponse({ type: MatchedSong })
   async hitById(@Param('id') geniusId: string) {
     let match = await this.matchSrv.findOne(geniusId);
     if (!match) {
-      const newMatch = await this.geniusSrv.details(geniusId);
+      const newMatch = await this.geniusSrv.details(geniusId, {
+        withRelations: true,
+      });
       match = await this.matchSrv.createOne(newMatch);
       console.log('created', match.id);
     }

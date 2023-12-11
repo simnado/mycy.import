@@ -8,7 +8,7 @@ import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { MatchService } from './matching/match/match.service';
 import { JobService } from './jobs/job/job.service';
-import { Match } from './matching/match/match.entity';
+import { MatchedSong } from './matching/match/match.entity';
 import { CyaniteSdkModule } from '@narendev/cyanite-sdk';
 import { AppleMusicModule } from '@narendev/apple-music-sdk';
 import { SpotifyModule } from '@narendev/spotify-sdk';
@@ -19,12 +19,12 @@ import { SpotifyModule } from '@narendev/spotify-sdk';
     TypeOrmModule.forRoot({
       type: 'postgres',
       url: process.env.DATABASE_URL,
-      entities: [Match],
+      entities: [MatchedSong],
       synchronize: true,
       ssl: true,
       extra: { poolSize: 10 },
     }),
-    TypeOrmModule.forFeature([Match]),
+    TypeOrmModule.forFeature([MatchedSong]),
     CyaniteSdkModule,
     AppleMusicModule,
     SpotifyModule,
