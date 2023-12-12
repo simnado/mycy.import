@@ -10,7 +10,7 @@ export class MatchService {
     private repository: Repository<MatchedSong>,
   ) {}
 
-  findMany(options: { geniusIds?: string[]; spotifyId?: string }) {
+  findMany(options: { geniusIds?: string[]; spotifyId?: string } = {}) {
     const filterOptions: FindOptionsWhere<MatchedSong> = {
       ...(options.geniusIds ? { geniusId: In(options.geniusIds) } : {}),
       ...(options.spotifyId ? { spotifyId: options.spotifyId } : {}),

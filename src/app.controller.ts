@@ -115,6 +115,12 @@ export class AppController {
     return syncItem;
   }
 
+  @Get('hits')
+  @ApiResponse({ type: MatchedSong, isArray: true })
+  async hits() {
+    return await this.matchSrv.findMany();
+  }
+
   @Get('hit/:id')
   @ApiResponse({ type: MatchedSong })
   async hitById(@Param('id') id: string) {
