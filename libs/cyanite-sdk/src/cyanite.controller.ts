@@ -12,6 +12,7 @@ import {
 import { ApiParam, ApiProperty, ApiQuery, ApiTags } from '@nestjs/swagger';
 import { CyaniteWebhookPayload } from './models';
 import { CyaniteSdkService } from './cyanite-sdk.service';
+import { EventEmitter2 } from '@nestjs/event-emitter';
 
 export class TriggerPayload {
   @ApiProperty()
@@ -26,6 +27,7 @@ export class TriggerPayload {
 export class CyaniteController {
   constructor(
     @Inject(CyaniteSdkService) private readonly cyaniteSrv: CyaniteSdkService,
+    @Inject(EventEmitter2) private eventEmitter: EventEmitter2,
   ) {}
 
   @Get('library')
@@ -73,5 +75,8 @@ export class CyaniteController {
   @Post('webhook')
   webhook(@Body() data: CyaniteWebhookPayload) {
     console.log(data);
+    if (data.event) {
+      this.eventEmitter.emit(`cyanite.${data.event.type}`, data);
+    }
   }
 }

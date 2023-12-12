@@ -10,11 +10,11 @@ export class MatchService {
     private repository: Repository<MatchedSong>,
   ) {}
 
-  findMany(options: { geniusIds?: string[] }) {
-    const filterOptions: FindOptionsWhere<MatchedSong> = {};
-    if (options.geniusIds) {
-      filterOptions.geniusId = In(options.geniusIds);
-    }
+  findMany(options: { geniusIds?: string[]; spotifyId?: string }) {
+    const filterOptions: FindOptionsWhere<MatchedSong> = {
+      ...(options.geniusIds ? { geniusId: In(options.geniusIds) } : {}),
+      ...(options.spotifyId ? { spotifyId: options.spotifyId } : {}),
+    };
     return this.repository.find({ where: filterOptions });
   }
 
@@ -26,5 +26,11 @@ export class MatchService {
     const match = this.repository.create(data);
     this.repository.save(match);
     return match;
+  }
+
+  async updateOne(id: number, data: Partial<MatchedSong>) {
+    const match = await this.repository.findOneBy({ id });
+    await this.repository.update(id, { ...match, ...data });
+    return await this.repository.findOneBy({ id });
   }
 }

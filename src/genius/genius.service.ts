@@ -159,6 +159,7 @@ export class GeniusService {
     const res = {
       geniusId: song.id,
       appleMusicId: song.apple_music_id ?? undefined,
+      // todo: use services to get id from url
       spotifyId: song.media
         .find((m) => m.provider === 'spotify')
         ?.url.split('/track/')
@@ -228,6 +229,7 @@ export class GeniusService {
       title: song.title,
       artist: song.artist_names,
       releaseDate: song.release_date,
+      // todo use api text_format=plain
       description: this.flatDescription(
         song.description?.dom ?? { children: [] },
       ),

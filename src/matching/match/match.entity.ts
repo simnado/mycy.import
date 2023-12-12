@@ -67,6 +67,16 @@ export type Album = {
   coverUrl: string;
 };
 
+export enum AnalyzeStatus {
+  Pending = 'Pending',
+  PreviewAnalyzing = 'PreviewAnalyzing',
+  PreviewAnalyzed = 'PreviewAnalyzed',
+  PreviewUnavailable = 'PreviewUnavailable',
+  CompleteAnalyzable = 'CompleteAnalyzable',
+  ConpleteAnalyzing = 'ConpleteAnalyzing',
+  CompleteAnalyzed = 'CompleteAnalyzed',
+}
+
 @Entity()
 export class MatchedSong extends Song {
   @ApiProperty()
@@ -82,12 +92,18 @@ export class MatchedSong extends Song {
   @Column({ unique: true })
   spotifyId?: string;
 
-  @Column({ unique: true, nullable: true })
+  @Column({ unique: true, nullable: true, type: String })
   youTubeId?: boolean;
 
-  @Column({ unique: true, nullable: true })
+  @Column({ unique: true, nullable: true, type: String })
   appleMusicId?: boolean;
 
-  @Column({ unique: true, nullable: true })
+  @Column({ unique: true, nullable: true, type: String })
   isrc?: string;
+
+  @Column({ type: 'enum', enum: AnalyzeStatus, default: AnalyzeStatus.Pending })
+  analyzeStatus: AnalyzeStatus;
+
+  @Column({ type: 'json', nullable: true })
+  analyzeResult: any;
 }

@@ -12,6 +12,7 @@ import { MatchedSong } from './matching/match/match.entity';
 import { CyaniteSdkModule } from '@narendev/cyanite-sdk';
 import { AppleMusicModule } from '@narendev/apple-music-sdk';
 import { SpotifyModule } from '@narendev/spotify-sdk';
+import { EventEmitterModule } from '@nestjs/event-emitter';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { SpotifyModule } from '@narendev/spotify-sdk';
       ssl: true,
       extra: { poolSize: 10 },
     }),
+    EventEmitterModule.forRoot({ global: true }),
     TypeOrmModule.forFeature([MatchedSong]),
     CyaniteSdkModule,
     AppleMusicModule,
