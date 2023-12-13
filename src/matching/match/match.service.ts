@@ -24,8 +24,7 @@ export class MatchService {
 
   createOne(data: Partial<MatchedSong>) {
     const match = this.repository.create(data);
-    this.repository.save(match);
-    return match;
+    return this.repository.save(match);
   }
 
   async updateOne(id: number, data: Partial<MatchedSong>) {

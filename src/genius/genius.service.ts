@@ -34,7 +34,9 @@ export class GeniusService {
     id: string,
     options: { withRelations?: boolean } = {},
   ): Promise<Partial<MatchedSong>> {
-    const { song } = await this.sdk.song(id);
+    const { song } = await this.sdk.song(id, {
+      text_format: 'plain',
+    });
 
     const artists = new Map<string, { roles: string[]; artist: LegalPerson }>();
     const companies = new Map<
@@ -207,32 +209,13 @@ export class GeniusService {
     return res;
   }
 
-  private flatDescription(el: { children?: any[]; tag: string }) {
-    const res = [];
-    for (const child of el.children ?? []) {
-      if (typeof child === 'object') {
-        res.push(this.flatDescription(child));
-      } else {
-        res.push(child);
-      }
-
-      if (child.tag === 'p') {
-        res.push('\n');
-      }
-    }
-    return res.join('').trim();
-  }
-
   protected mapSong(song: any) {
     return {
       geniusId: String(song.id),
       title: song.title,
       artist: song.artist_names,
       releaseDate: song.release_date,
-      // todo use api text_format=plain
-      description: this.flatDescription(
-        song.description?.dom ?? { children: [] },
-      ),
+      description: song.description?.plain,
       language: song.language,
       recordingLocation: song.recording_location,
       imageUrl: song.song_art_image_url,

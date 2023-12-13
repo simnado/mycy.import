@@ -38,7 +38,7 @@ export class Song {
   @ApiProperty()
   language: string;
 
-  @Column()
+  @Column({ nullable: true })
   @ApiProperty()
   recordingLocation?: string;
 
